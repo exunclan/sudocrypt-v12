@@ -5,7 +5,7 @@ import useTitle from "../lib/use-title";
 const ComingSoon: React.FC = () => {
   useTitle("Coming Soon");
   return (
-    <div className="bg-dark w-full min-h-screen">
+    <div className="bg-dark w-full min-h-screen py-12">
       <div className="flex justify-center items-center h-full sm:h-[calc(100vh-104px-120px)] w-full px-4 py-8">
         <div className="w-full max-w-2xl h-auto flex flex-col justify-center items-center p-0 sm:p-8">
           <img
@@ -26,6 +26,14 @@ const ComingSoon: React.FC = () => {
               window.location.href = "https://sudocrypt.com";
             }}
           />
+          <a
+            href="//exun.co/sudocrypt"
+            target={"_blank"}
+            rel="noreferrer"
+            className="border cursor-pointer mt-6 text-xl border-sudo-red text-sudo-red transition duration-200 ease-in-out hover:bg-sudo-red hover:text-white py-4 px-6"
+          >
+            Discord
+          </a>
         </div>
       </div>
     </div>
