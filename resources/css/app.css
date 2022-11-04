@@ -3,30 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "SF Pro";
-  src: url("fonts/SF-Pro.ttf") format("truetype");
-  font-weight: normal;
+  font-family: "VCR OSD Mono";
+  src: url("fonts/VCR_OSD_MONO_1.001.ttf") format("truetype");
+  font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "SF Pro";
-  src: url("fonts/SF-Pro.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "SF Pro";
-  src: url("fonts/SF-Pro.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "SF Pro";
-  src: url("fonts/SF-Pro.ttf") format("truetype");
-  font-weight: 900;
+  font-family: "Arcade";
+  src: url("fonts/ARCADE_N.ttf") format("truetype");
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -74,7 +60,7 @@ html,
   padding: 0;
 }
 
-.button {
+/* .button {
   @apply cursor-pointer rounded bg-sudo block text-center py-4 px-20
     text-sm uppercase font-bold focus:outline-none
     focus:ring-4 focus:ring-sudo-dark;
@@ -113,4 +99,4 @@ html,
   width: 100%;
   height: 100%;
   background: red;
-}
+} */

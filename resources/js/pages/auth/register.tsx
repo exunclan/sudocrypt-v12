@@ -30,135 +30,73 @@ const Register: React.FC = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center w-full h-full px-4 my-4">
-        <IndexCard
-          title="Register"
-          className="sm:h-[85vh] w-full sm:w-3/4 md:w-1/2"
-        >
-          <div className="h-full overflow-y-auto">
-            <form
-              className="w-full"
-              onSubmit={(e: React.SyntheticEvent) => {
-                e.preventDefault();
-                Inertia.post("/auth/register", data, {
-                  preserveState: true,
-                  preserveScroll: true,
-                });
-              }}
-            >
-              <TextInput
-                name="name"
-                label="Name"
-                placeholder="John Doe"
-                containerClassName="my-5"
-                type="text"
-                value={data.name}
-                disabled={false}
-                error={errors.name}
-                onChange={handleChange}
-              />
+      <div className="flex flex-col lg:px-24 px-5 w-1/2 mx-auto">
+        <h1 className="text-white font-mono text-5xl uppercase">Register</h1>
+        <TextInput
+          name="name"
+          placeholder="NAME"
+          containerClassName="my-5"
+          type="text"
+          value={data.name}
+          disabled={false}
+          error={errors.name}
+          onChange={handleChange}
+        />
 
-              <TextInput
-                name="username"
-                label="Username"
-                placeholder="johndoe"
-                containerClassName="my-5"
-                type="text"
-                value={data.username}
-                disabled={false}
-                error={errors.username}
-                onChange={handleChange}
-              />
+        <TextInput
+          name="username"
+          placeholder="USERNAME"
+          containerClassName="my-5"
+          type="text"
+          value={data.username}
+          disabled={false}
+          error={errors.username}
+          onChange={handleChange}
+        />
 
-              <TextInput
-                name="email"
-                label="Email"
-                placeholder="john@example.com"
-                containerClassName="my-5"
-                type="email"
-                value={data.email}
-                disabled={false}
-                error={errors.email}
-                onChange={handleChange}
-              />
+        <TextInput
+          name="email"
+          placeholder="EMAIL"
+          containerClassName="my-5"
+          type="email"
+          value={data.email}
+          disabled={false}
+          error={errors.email}
+          onChange={handleChange}
+        />
 
-              <TextInput
-                name="institution"
-                label="Institution"
-                placeholder="Delhi Public School, R.K. Puram"
-                containerClassName="my-5"
-                type="text"
-                value={data.institution}
-                disabled={false}
-                error={errors.institution}
-                onChange={handleChange}
-              />
+        <TextInput
+          name="institution"
+          placeholder="INSTITUTION"
+          containerClassName="my-5"
+          type="text"
+          value={data.institution}
+          disabled={false}
+          error={errors.institution}
+          onChange={handleChange}
+        />
 
-              <TextInput
-                name="password"
-                label="Password"
-                placeholder="sup3rs3cr3tp4ssw0rd"
-                containerClassName="my-5"
-                type="password"
-                value={data.password}
-                disabled={false}
-                error={errors.password}
-                onChange={handleChange}
-              />
+        <TextInput
+          name="password"
+          placeholder="PASSWORD"
+          containerClassName="my-5"
+          type="password"
+          value={data.password}
+          disabled={false}
+          error={errors.password}
+          onChange={handleChange}
+        />
 
-              <TextInput
-                name="referred_by"
-                label="Referred By (username)"
-                placeholder="janedoe"
-                containerClassName="my-5"
-                type="text"
-                value={data.referred_by}
-                disabled={false}
-                error={errors.referred_by}
-                onChange={handleChange}
-              />
-
-              <div className="flex flex-col items-center justify-center">
-                <Recaptcha
-                  sitekey="6Ld3iU0cAAAAAH_pvjPNK_fUs695Tn4Dnq33Q4zI"
-                  theme="dark"
-                  size="normal"
-                  onChange={(token: string | null) => {
-                    setData((values) => {
-                      return { ...values, recaptcha: token || "" };
-                    });
-                  }}
-                  onExpired={() => {
-                    setData((values) => {
-                      return { ...values, recaptcha: "" };
-                    });
-                  }}
-                />
-                {errors.recaptcha && (
-                  <p className="text-red-500 text-sm">{errors.recaptcha}</p>
-                )}
-              </div>
-
-              <div className="flex justify-center mt-4">
-                <button type="submit" className="button" disabled={false}>
-                  Register
-                </button>
-              </div>
-
-              <div className="my-5">
-                <div className="text-base text-center">
-                  Already have an account?{" "}
-                  <Link
-                    className="font-bold text-sudo focus:text-sudo-light"
-                    href="/auth/login"
-                  >
-                    Login
-                  </Link>
-                </div>
-              </div>
-            </form>
-          </div>
-        </IndexCard>
+        <TextInput
+          name="referred_by"
+          placeholder="REFERRAL CODE"
+          containerClassName="my-5"
+          type="text"
+          value={data.referred_by}
+          disabled={false}
+          error={errors.referred_by}
+          onChange={handleChange}
+        />
       </div>
     </Layout>
   );

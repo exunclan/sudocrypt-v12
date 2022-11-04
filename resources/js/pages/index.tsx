@@ -15,14 +15,9 @@ const Index: React.FC = () => {
           <h1 className="w-full text-red-500 text-4xl sm:text-6xl font-bold mb-6 text-center">
             Sudocrypt 2021-22
           </h1>
-<<<<<<< HEAD
           <p className="w-full text-white text-lg sm:text-xl font-bold text-center mb-3">
             00:00:01 on Monday, 10th January 2022 to 23:59:59 on Tuesday, 11th
             January 2022.
-=======
-          <p className="w-full text-gray-300 text-xl sm:text-2xl text-center mb-6">
-            10th January 2022 - 11th January 2022
->>>>>>> b812766 (chore: ui changes according to design dept)
           </p>
           <div className="flex flex-col md:flex-row">
             <a

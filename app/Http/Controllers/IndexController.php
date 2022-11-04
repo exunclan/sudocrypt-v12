@@ -12,19 +12,20 @@ class IndexController extends Controller
 {
   public function show(Request $request)
   {
-    if (auth()->check()) {
-      $referred_by = null;
-      if (auth()->user()->referred_by) {
-        $referred_by = User::where('id', auth()->user()->referred_by)->first()->username;
-      }
-      return Inertia::render('indexAuthenticated', [
-        'referred_by' => $referred_by,
-        'referral_number' => User::where('referred_by', auth()->user()->id)->count(),
-        'notifications' => Notification::orderBy('created_at', 'DESC')->get()
-      ]);
-    } else {
-      return Inertia::render('index');
-    }
+    // if (auth()->check()) {
+    //   $referred_by = null;
+    //   if (auth()->user()->referred_by) {
+    //     $referred_by = User::where('id', auth()->user()->referred_by)->first()->username;
+    //   }
+    //   return Inertia::render('indexAuthenticated', [
+    //     'referred_by' => $referred_by,
+    //     'referral_number' => User::where('referred_by', auth()->user()->id)->count(),
+    //     'notifications' => Notification::orderBy('created_at', 'DESC')->get()
+    //   ]);
+    // } else {
+    //   return Inertia::render('index');
+    // }
+    return Inertia::render('comingSoon');
   }
 
   public function about()

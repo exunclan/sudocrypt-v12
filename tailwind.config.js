@@ -14,15 +14,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: "#161A1D",
-        "dark-opacity": "rgba(22, 26, 29, 0.7)",
-        "dark-lighter": "#20262b",
-        sudo: "#D1483B",
-        "sudo-dark": "#83271f",
-        "sudo-light": "#fb6355",
+        dark: "#1F1C1C",
+        "sudo-red": "#DF584F",
+        "sudo-green": "#8CBEB2",
+        "sudo-yellow": "#F3B562",
       },
       fontFamily: {
-        sans: ["SF Pro", ...defaultTheme.fontFamily.sans],
+        sans: ["VCR OSD Mono", ...defaultTheme.fontFamily.sans],
+        mono: ["Arcade", ...defaultTheme.fontFamily.mono],
       },
     },
   },

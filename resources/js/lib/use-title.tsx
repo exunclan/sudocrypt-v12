@@ -13,7 +13,7 @@ function useTitle(
   title: string,
   options: UseTitleOptions = DEFAULT_USE_TITLE_OPTIONS
 ) {
-  title = `${title} | Sudocrypt v11.0`;
+  title = `${title} | Sudocrypt v12.0`;
 
   const prevTitleRef = useRef(document.title);
   document.title = title;
