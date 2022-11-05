@@ -41,108 +41,108 @@ Route::get('/leaderboard', [LeaderboardController::class, 'show'])->name('leader
 /* Route::get('/rlleaderboard', [RlLeaderboardController::class, 'show'])->name('rlleaderboard'); */
 
 Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('index');
-Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->name('about');
+// Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->name('about');
 
-Route::prefix('/me')
-  ->middleware(['auth'])
-  ->name('me.')
-  ->group(function () {
-    Route::post('/edit', [MeController::class, 'edit'])->name('edit');
-  });
-
-Route::prefix('/play')
-  ->middleware(['in-progress', 'auth', 'dq'])
-  ->name('play.')
-  ->group(function () {
-    Route::get('/', [PlayController::class, 'show'])->name('show');
-    Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
-    Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
-  });
-
-// ----- Authentication -----
-Route::prefix('/auth')
-  ->middleware(['guest'])
-  ->name('auth.')
-  ->group(function () {
-    Route::get('/register', [AuthController::class, 'registerShow'])
-      ->name('register');
-    Route::get('/login', [AuthController::class, 'loginShow'])
-      ->name('login');
-    Route::post('/register', [AuthController::class, 'register'])
-      ->name('handleRegister');
-    Route::post('/login', [AuthController::class, 'login'])
-      ->name('handleLogin');
-  });
-
-Route::get('/auth/logout', [AuthController::class, 'destroy'])
-  ->middleware(['auth'])
-  ->name('auth.logout');
-
-Route::prefix('/discord')
-  ->middleware(['auth'])
-  ->name('discord.')
-  ->group(function () {
-    Route::get('/', [DiscordController::class, 'redirect'])->name('connect');
-    Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
-    Route::get('/disconnect', [DiscordController::class, 'disconnect'])->name('connect');
-  });
-
-Route::prefix('/discord/login')
-  ->name('discord.login')
-  ->group(function () {
-    Route::get('/', [DiscordController::class, 'loginRedirect'])->name('redirect');
-    Route::get('/callback', [DiscordController::class, 'loginCallback'])->name('callback');
-  });
-
-Route::prefix('/admin')
-  ->middleware(['auth', 'admin'])
-  ->name('admin.')
-  ->group(function () {
-    Route::get('/', [AdminController::class, 'show'])->name('index');
-
-    Route::prefix('/users')
-      ->name('users.')
-      ->group(function () {
-        Route::get('/', [UserController::class, 'index'])
-          ->name('index');
-        Route::get('/{user}', [UserController::class, 'show'])
-          ->name('show');
-        Route::get('/{user}/lvl/{level}', [UserController::class, 'level'])
-          ->name('level');
-        Route::post('/{user}/dq', [UserController::class, 'disqualify'])
-          ->name('disqualify');
-        Route::post('/{user}/admin', [UserController::class, 'admin'])
-          ->name('admin');
-        Route::post('/{user}/changepwd', [UserController::class, 'changePassword'])
-          ->name('changePassword');
-      });
-
-    Route::resource('/shortlinks', ShortlinkController::class)
-      ->only(['index', 'store', 'destroy']);
-
-    Route::resource('/notifications', NotificationController::class)
-      ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']);
-
-    Route::prefix('/levels')
-      ->name('levels.')
-      ->group(function () {
-        Route::get('/', [LevelController::class, 'index'])->name('index');
-        Route::get('/{level}', [LevelController::class, 'show'])->name('show');
-        Route::put('/{level}', [LevelController::class, 'update'])->name('update');
-      });
-
-    Route::prefix('/circles')
-      ->name('circles.')
-      ->group(function () {
-        Route::put('/{circle}', [CircleController::class, 'update'])->name('update');
-      });
-  });
-
-Route::get('/{shortlink:shortlink}', [ShortlinkController::class, 'redirect'])
-  ->where('shortlink', '.*')
-  ->missing(function (Request $request) {
-    return Redirect::to('/404');
-  });
+// Route::prefix('/me')
+//   ->middleware(['auth'])
+//   ->name('me.')
+//   ->group(function () {
+//     Route::post('/edit', [MeController::class, 'edit'])->name('edit');
+//   });
+//
+// Route::prefix('/play')
+//   ->middleware(['in-progress', 'auth', 'dq'])
+//   ->name('play.')
+//   ->group(function () {
+//     Route::get('/', [PlayController::class, 'show'])->name('show');
+//     Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
+//     Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
+//   });
+//
+// // ----- Authentication -----
+// Route::prefix('/auth')
+//   ->middleware(['guest'])
+//   ->name('auth.')
+//   ->group(function () {
+//     Route::get('/register', [AuthController::class, 'registerShow'])
+//       ->name('register');
+//     Route::get('/login', [AuthController::class, 'loginShow'])
+//       ->name('login');
+//     Route::post('/register', [AuthController::class, 'register'])
+//       ->name('handleRegister');
+//     Route::post('/login', [AuthController::class, 'login'])
+//       ->name('handleLogin');
+//   });
+//
+// Route::get('/auth/logout', [AuthController::class, 'destroy'])
+//   ->middleware(['auth'])
+//   ->name('auth.logout');
+//
+// Route::prefix('/discord')
+//   ->middleware(['auth'])
+//   ->name('discord.')
+//   ->group(function () {
+//     Route::get('/', [DiscordController::class, 'redirect'])->name('connect');
+//     Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
+//     Route::get('/disconnect', [DiscordController::class, 'disconnect'])->name('connect');
+//   });
+//
+// Route::prefix('/discord/login')
+//   ->name('discord.login')
+//   ->group(function () {
+//     Route::get('/', [DiscordController::class, 'loginRedirect'])->name('redirect');
+//     Route::get('/callback', [DiscordController::class, 'loginCallback'])->name('callback');
+//   });
+//
+// Route::prefix('/admin')
+//   ->middleware(['auth', 'admin'])
+//   ->name('admin.')
+//   ->group(function () {
+//     Route::get('/', [AdminController::class, 'show'])->name('index');
+//
+//     Route::prefix('/users')
+//       ->name('users.')
+//       ->group(function () {
+//         Route::get('/', [UserController::class, 'index'])
+//           ->name('index');
+//         Route::get('/{user}', [UserController::class, 'show'])
+//           ->name('show');
+//         Route::get('/{user}/lvl/{level}', [UserController::class, 'level'])
+//           ->name('level');
+//         Route::post('/{user}/dq', [UserController::class, 'disqualify'])
+//           ->name('disqualify');
+//         Route::post('/{user}/admin', [UserController::class, 'admin'])
+//           ->name('admin');
+//         Route::post('/{user}/changepwd', [UserController::class, 'changePassword'])
+//           ->name('changePassword');
+//       });
+//
+//     Route::resource('/shortlinks', ShortlinkController::class)
+//       ->only(['index', 'store', 'destroy']);
+//
+//     Route::resource('/notifications', NotificationController::class)
+//       ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']);
+//
+//     Route::prefix('/levels')
+//       ->name('levels.')
+//       ->group(function () {
+//         Route::get('/', [LevelController::class, 'index'])->name('index');
+//         Route::get('/{level}', [LevelController::class, 'show'])->name('show');
+//         Route::put('/{level}', [LevelController::class, 'update'])->name('update');
+//       });
+//
+//     Route::prefix('/circles')
+//       ->name('circles.')
+//       ->group(function () {
+//         Route::put('/{circle}', [CircleController::class, 'update'])->name('update');
+//       });
+//   });
+//
+// Route::get('/{shortlink:shortlink}', [ShortlinkController::class, 'redirect'])
+//   ->where('shortlink', '.*')
+//   ->missing(function (Request $request) {
+//     return Redirect::to('/404');
+//   });
 
 if (App::environment('local')) {
   Route::get('/authn', function () {
