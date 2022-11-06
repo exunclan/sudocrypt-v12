@@ -37,8 +37,8 @@ const Countdown: React.FC<ICountdownProps> = ({
   const { dates, started, ended } = usePage<IPageProps>().props;
   if (ended) {
     return (
-      <div style={style}>
-        <div>Cryptocracy 2021 has ended</div>
+      <div style={style} className="text-white">
+        <div>Sudocrypt 2022 has ended</div>
       </div>
     );
   }
