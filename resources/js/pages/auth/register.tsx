@@ -6,7 +6,6 @@ import TextInput from "../../components/TextInput";
 import Layout from "../../components/Layout";
 import useTitle from "../../lib/use-title";
 import { IPageProps } from "../../lib/types";
-import IndexCard from "../../components/Home/IndexCard";
 
 const Register: React.FC = () => {
   useTitle("Register");
@@ -30,8 +29,19 @@ const Register: React.FC = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col lg:px-24 px-5 w-1/2 mx-auto">
-        <h1 className="text-white font-mono text-5xl uppercase">Register</h1>
+      <form
+        className="flex flex-col lg:px-24 pb-12 px-5 w-1/2 mx-auto"
+        onSubmit={(e: React.SyntheticEvent) => {
+          e.preventDefault();
+          Inertia.post("/auth/register", data, {
+            preserveState: true,
+            preserveScroll: true,
+          });
+        }}
+      >
+        <h1 className="text-white font-mono text-4xl mb-4 uppercase">
+          Register
+        </h1>
         <TextInput
           name="name"
           placeholder="NAME"
@@ -97,7 +107,39 @@ const Register: React.FC = () => {
           error={errors.referred_by}
           onChange={handleChange}
         />
-      </div>
+        <Recaptcha
+          sitekey="6Ld3iU0cAAAAAH_pvjPNK_fUs695Tn4Dnq33Q4zI"
+          theme="dark"
+          size="normal"
+          onChange={(token: string | null) => {
+            setData((values) => {
+              return { ...values, recaptcha: token || "" };
+            });
+          }}
+          onExpired={() => {
+            setData((values) => {
+              return { ...values, recaptcha: "" };
+            });
+          }}
+        />
+        {errors.recaptcha && (
+          <p className="text-sudo-red text-sm">{errors.recaptcha}</p>
+        )}
+        <button className="text-white bg-sudo-red px-4 py-4 mt-4 transition duration-200 ease-in-out hover:opacity-80">
+          Register
+        </button>
+        <div className="my-5">
+          <div className="text-base text-center">
+            Already have an account?{" "}
+            <Link
+              className="font-bold text-sudo focus:text-sudo-light"
+              href="/auth/login"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      </form>
     </Layout>
   );
 };

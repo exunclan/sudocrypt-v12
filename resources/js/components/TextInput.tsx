@@ -26,7 +26,7 @@ const TextInput: React.FC<IProps> = ({
         name={name}
         {...props}
       />
-      {error && <div className="text-sm text-red-500 pt-2">{error}</div>}
+      {error && <div className="text-sm text-sudo-red pt-2">{error}</div>}
     </div>
   );
 };

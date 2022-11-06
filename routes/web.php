@@ -59,7 +59,7 @@ Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('ind
 //     Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
 //   });
 //
-// // ----- Authentication -----
+// ----- Authentication -----
 // Route::prefix('/auth')
 //   ->middleware(['guest'])
 //   ->name('auth.')
@@ -73,7 +73,7 @@ Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('ind
 //     Route::post('/login', [AuthController::class, 'login'])
 //       ->name('handleLogin');
 //   });
-//
+
 // Route::get('/auth/logout', [AuthController::class, 'destroy'])
 //   ->middleware(['auth'])
 //   ->name('auth.logout');

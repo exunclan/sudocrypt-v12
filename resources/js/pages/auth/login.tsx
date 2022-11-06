@@ -38,87 +38,79 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center h-full sm:h-[calc(100vh-104px-120px)] w-full px-4 py-8">
-        <IndexCard
-          title="Login"
-          className="sm:h-[60vh] w-full sm:w-3/4 md:w-1/2"
+      <div className="flex flex-col lg:px-24 pb-12 px-5 w-1/2 mx-auto">
+        <form
+          className="w-full h-full overflow-y-auto"
+          onSubmit={(e: React.SyntheticEvent) => {
+            e.preventDefault();
+            post("/auth/login", {
+              preserveState: true,
+            });
+          }}
         >
-          <form
-            className="w-full h-full overflow-y-auto"
-            onSubmit={(e: React.SyntheticEvent) => {
-              e.preventDefault();
-              post("/auth/login", {
-                preserveState: true,
-              });
-            }}
-          >
-            <TextInput
-              name="email"
-              label="Email"
-              placeholder="john@example.com"
-              containerClassName="my-5"
-              type="email"
-              disabled={processing}
-              error={errors.email}
-              onChange={handleChange}
-            />
+          <h1 className="text-white font-mono text-4xl mb-4 uppercase">
+            Login
+          </h1>
+          <TextInput
+            name="email"
+            placeholder="Email"
+            containerClassName="my-5"
+            type="email"
+            disabled={processing}
+            error={errors.email}
+            onChange={handleChange}
+          />
 
-            <TextInput
-              name="password"
-              label="Password"
-              placeholder="sup3rs3cr3tp4ssw0rd"
-              containerClassName="my-5"
-              type="password"
-              disabled={processing}
-              error={errors.password}
-              onChange={handleChange}
-            />
+          <TextInput
+            name="password"
+            placeholder="Password"
+            containerClassName="my-5"
+            type="password"
+            disabled={processing}
+            error={errors.password}
+            onChange={handleChange}
+          />
 
-            {error && (
-              <div className="my-5">
-                <div className="text-red-500 text-center font-bold">
-                  {error}
-                </div>
-              </div>
-            )}
-
-            <div className="flex justify-center mt-20 mb-5">
-              <button type="submit" className="button" disabled={processing}>
-                Login
-              </button>
+          {error && (
+            <div className="my-5">
+              <div className="text-red-500 text-center font-bold">{error}</div>
             </div>
+          )}
 
-            <div className="my-5 text-center uppercase font-bold text-gray-600">
-              or
-            </div>
+          <button className="text-white w-full bg-sudo-red px-4 py-4 mt-4 transition duration-200 ease-in-out hover:opacity-80">
+            Login
+          </button>
 
-            <div className="flex justify-center my-5">
+          {/* <div className="my-5 text-center uppercase font-bold text-gray-600">
+            or
+          </div>
+
+          <div className="flex justify-center my-5">
+            <Link
+              className="focus:ring-[#3e48b4] !bg-[#5865F2] !flex items-center justify-center button"
+              disabled={processing}
+              href="/discord/login"
+            >
+              <img
+                src="/img/Discord-Logo-White.svg"
+                className="h-4 w-auto mr-2"
+              />
+              Login with Discord
+            </Link>
+          </div> */}
+
+          <div className="my-5">
+            <div className="text-base text-center">
+              Don&apos;t have an account?{" "}
               <Link
-                className="focus:ring-[#3e48b4] !bg-[#5865F2] !flex items-center justify-center button"
-                disabled={processing}
-                href="/discord/login"
+                className="font-bold text-sudo focus:text-sudo-light"
+                href="/auth/register"
               >
-                <img
-                  src="/img/Discord-Logo-White.svg"
-                  className="h-4 w-auto mr-2"
-                />
-                Login with Discord
+                Register
               </Link>
             </div>
-
-            <div className="my-5">
-              <div className="text-base text-center">
-                Don&apos;t have an account?{" "}
-                <Link
-                  className="font-bold text-sudo focus:text-sudo-light"
-                  href="/auth/register"
-                >
-                  Register
-                </Link>
-              </div>
-            </div>
-          </form>
-        </IndexCard>
+          </div>
+        </form>
       </div>
     </Layout>
   );
