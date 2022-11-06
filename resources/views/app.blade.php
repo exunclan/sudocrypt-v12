@@ -8,10 +8,10 @@
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
   <script src="{{ mix('/js/app.js') }}" defer></script>
   <link rel="shortcut icon" href="/img/logo-red.png" type="image/x-icon">
-  <title>Sudocrypt v11.0</title>
+  <title>Sudocrypt v12.0</title>
 </head>
 
-<body class="font-sans">
+<body class="font-sans bg-dark">
   @inertia
 </body>
 

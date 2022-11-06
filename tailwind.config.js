@@ -20,9 +20,25 @@ module.exports = {
         "sudo-yellow": "#F3B562",
       },
       fontFamily: {
-        sans: ["VCR OSD Mono", ...defaultTheme.fontFamily.sans],
-        mono: ["Arcade", ...defaultTheme.fontFamily.mono],
+        mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["Panchang", ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        "m2xl": { "max": "1535px" },
+        // => @media (max-width: 1535px) { ... }
+
+        "mxl": { "max": "1279px" },
+        // => @media (max-width: 1279px) { ... }
+
+        "mlg": { "max": "1023px" },
+        // => @media (max-width: 1023px) { ... }
+
+        "mmd": { "max": "767px" },
+        // => @media (max-width: 767px) { ... }
+
+        "msm": { "max": "639px" },
+        // => @media (max-width: 639px) { ... }
+      }
     },
   },
   plugins: [require("@tailwindcss/forms")],

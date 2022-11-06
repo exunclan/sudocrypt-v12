@@ -36,3 +36,6 @@ cp .env.example .env
 ```sh
 npm run watch
 ```
+
+## TODO
+- [ ] Rename the comingSoon page to something like splash, since we'll use the same page when the hunt ends, also keep a static version ready
