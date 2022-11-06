@@ -20,6 +20,7 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
       flash: { error: flashError },
     },
   } = usePage<IPageProps>();
+
   const { setData, post, processing, errors } = useForm({
     email: "",
     password: "",
@@ -37,10 +38,10 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
   ) => setData(e.target.name as "email" | "password", e.target.value);
 
   return (
-    <Layout>
-      <div className="flex flex-col lg:px-24 pb-12 px-5 w-1/2 mx-auto">
+    <Layout footer={true}>
+      <div className="h-full w-full max-w-[500px] flex flex-col items-center justify-center mx-auto">
         <form
-          className="w-full h-full overflow-y-auto"
+          className="w-full"
           onSubmit={(e: React.SyntheticEvent) => {
             e.preventDefault();
             post("/auth/login", {
@@ -80,37 +81,38 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
           <button className="text-white w-full bg-sudo-red px-4 py-4 mt-4 transition duration-200 ease-in-out hover:opacity-80">
             Login
           </button>
+        </form>
 
-          {/* <div className="my-5 text-center uppercase font-bold text-gray-600">
+        <div className="flex flex-col gap-y-4 mt-10 text-white font-mono">
+          <div className="text-center uppercase">
             or
           </div>
-
-          <div className="flex justify-center my-5">
+          <div>
             <Link
-              className="focus:ring-[#3e48b4] !bg-[#5865F2] !flex items-center justify-center button"
+              className="flex items-center justify-center gap-x-3"
               disabled={processing}
               href="/discord/login"
             >
               <img
                 src="/img/Discord-Logo-White.svg"
-                className="h-4 w-auto mr-2"
+                className="h-4 w-auto"
               />
-              Login with Discord
+              <span className="text-sudo-yellow border-b-2 border-sudo-yellow">Login with Discord</span>
             </Link>
-          </div> */}
-
-          <div className="my-5">
+          </div>
+          <div>
             <div className="text-base text-center">
               Don&apos;t have an account?{" "}
               <Link
-                className="font-bold text-sudo focus:text-sudo-light"
+                className="text-sudo-red border-b-2 border-sudo-red pb-1"
                 href="/auth/register"
               >
                 Register
               </Link>
             </div>
           </div>
-        </form>
+        </div>
+
       </div>
     </Layout>
   );

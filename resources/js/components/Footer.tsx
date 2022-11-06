@@ -51,8 +51,8 @@ export default function Footer() {
         </a>
       </div>
 
-      <div className="text-[0.8rem] sm:text-base text-white">
-        <div className="mb-1">
+      <div className="text-[0.8rem] sm:text-base text-white mb-10">
+        <div className="mb-2">
           <a target="_blank" href="//lnexun.com" rel="noreferrer">
             Natural Log of Exun - ln(exun)
           </a>{" "}

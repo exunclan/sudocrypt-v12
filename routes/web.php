@@ -41,7 +41,7 @@ Route::get('/leaderboard', [LeaderboardController::class, 'show'])->name('leader
 /* Route::get('/rlleaderboard', [RlLeaderboardController::class, 'show'])->name('rlleaderboard'); */
 
 Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('index');
-// Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->name('about');
+Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->name('about');
 
 // Route::prefix('/me')
 //   ->middleware(['auth'])
@@ -58,42 +58,42 @@ Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('ind
 //     Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
 //     Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
 //   });
-//
-// ----- Authentication -----
-// Route::prefix('/auth')
-//   ->middleware(['guest'])
-//   ->name('auth.')
-//   ->group(function () {
-//     Route::get('/register', [AuthController::class, 'registerShow'])
-//       ->name('register');
-//     Route::get('/login', [AuthController::class, 'loginShow'])
-//       ->name('login');
-//     Route::post('/register', [AuthController::class, 'register'])
-//       ->name('handleRegister');
-//     Route::post('/login', [AuthController::class, 'login'])
-//       ->name('handleLogin');
-//   });
 
-// Route::get('/auth/logout', [AuthController::class, 'destroy'])
-//   ->middleware(['auth'])
-//   ->name('auth.logout');
-//
-// Route::prefix('/discord')
-//   ->middleware(['auth'])
-//   ->name('discord.')
-//   ->group(function () {
-//     Route::get('/', [DiscordController::class, 'redirect'])->name('connect');
-//     Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
-//     Route::get('/disconnect', [DiscordController::class, 'disconnect'])->name('connect');
-//   });
-//
-// Route::prefix('/discord/login')
-//   ->name('discord.login')
-//   ->group(function () {
-//     Route::get('/', [DiscordController::class, 'loginRedirect'])->name('redirect');
-//     Route::get('/callback', [DiscordController::class, 'loginCallback'])->name('callback');
-//   });
-//
+// ----- Authentication -----
+Route::prefix('/auth')
+  ->middleware(['guest'])
+  ->name('auth.')
+  ->group(function () {
+    Route::get('/register', [AuthController::class, 'registerShow'])
+      ->name('register');
+    Route::get('/login', [AuthController::class, 'loginShow'])
+      ->name('login');
+    Route::post('/register', [AuthController::class, 'register'])
+      ->name('handleRegister');
+    Route::post('/login', [AuthController::class, 'login'])
+      ->name('handleLogin');
+  });
+
+Route::get('/auth/logout', [AuthController::class, 'destroy'])
+  ->middleware(['auth'])
+  ->name('auth.logout');
+
+Route::prefix('/discord')
+  ->middleware(['auth'])
+  ->name('discord.')
+  ->group(function () {
+    Route::get('/', [DiscordController::class, 'redirect'])->name('connect');
+    Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
+    Route::get('/disconnect', [DiscordController::class, 'disconnect'])->name('connect');
+  });
+
+Route::prefix('/discord/login')
+  ->name('discord.login')
+  ->group(function () {
+    Route::get('/', [DiscordController::class, 'loginRedirect'])->name('redirect');
+    Route::get('/callback', [DiscordController::class, 'loginCallback'])->name('callback');
+  });
+
 // Route::prefix('/admin')
 //   ->middleware(['auth', 'admin'])
 //   ->name('admin.')
