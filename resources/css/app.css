@@ -16,34 +16,101 @@
   font-style: normal;
 }
 
-/* /1* width *1/ */
-/* ::-webkit-scrollbar { */
-/*   width: 7px; */
-/* } */
+@font-face {
+  font-family: 'Panchang-Variable';
+  src: url('../fonts/Panchang-Variable.woff2') format('woff2'),
+       url('../fonts/Panchang-Variable.woff') format('woff'),
+       url('../fonts/Panchang-Variable.ttf') format('truetype');
+       font-weight: 200 800;
+       font-display: swap;
+       font-style: normal;
+}
 
-/* /1* Track *1/ */
-/* ::-webkit-scrollbar-track { */
-/*   background: transparent; */
-/* } */
 
-/* /1* Handle *1/ */
-/* ::-webkit-scrollbar-thumb { */
-/*   background: #ffffff30; */
-/* } */
+@font-face {
+  font-family: 'Panchang-Extralight';
+  src: url('../fonts/Panchang-Extralight.woff2') format('woff2'),
+       url('../fonts/Panchang-Extralight.woff') format('woff'),
+       url('../fonts/Panchang-Extralight.ttf') format('truetype');
+       font-weight: 200;
+       font-display: swap;
+       font-style: normal;
+}
 
-/* /1* Handle on hover *1/ */
-/* ::-webkit-scrollbar-thumb:hover { */
-/*   background: transparent; */
-/* } */
 
-/* #nprogress .bar { */
-/*   box-shadow: none; */
-/*   height: 5px !important; */
-/* } */
+@font-face {
+  font-family: 'Panchang-Light';
+  src: url('../fonts/Panchang-Light.woff2') format('woff2'),
+       url('../fonts/Panchang-Light.woff') format('woff'),
+       url('../fonts/Panchang-Light.ttf') format('truetype');
+       font-weight: 300;
+       font-display: swap;
+       font-style: normal;
+}
 
-/* #nprogress .bar .peg { */
-/*   box-shadow: none; */
-/* } */
+
+@font-face {
+  font-family: 'Panchang-Regular';
+  src: url('../fonts/Panchang-Regular.woff2') format('woff2'),
+       url('../fonts/Panchang-Regular.woff') format('woff'),
+       url('../fonts/Panchang-Regular.ttf') format('truetype');
+       font-weight: 400;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Panchang-Medium';
+  src: url('../fonts/Panchang-Medium.woff2') format('woff2'),
+       url('../fonts/Panchang-Medium.woff') format('woff'),
+       url('../fonts/Panchang-Medium.ttf') format('truetype');
+       font-weight: 500;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Panchang-Semibold';
+  src: url('../fonts/Panchang-Semibold.woff2') format('woff2'),
+       url('../fonts/Panchang-Semibold.woff') format('woff'),
+       url('../fonts/Panchang-Semibold.ttf') format('truetype');
+       font-weight: 600;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Panchang-Bold';
+  src: url('../fonts/Panchang-Bold.woff2') format('woff2'),
+       url('../fonts/Panchang-Bold.woff') format('woff'),
+       url('../fonts/Panchang-Bold.ttf') format('truetype');
+       font-weight: 700;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Panchang-Extrabold';
+  src: url('../fonts/Panchang-Extrabold.woff2') format('woff2'),
+       url('../fonts/Panchang-Extrabold.woff') format('woff'),
+       url('../fonts/Panchang-Extrabold.ttf') format('truetype');
+       font-weight: 800;
+       font-display: swap;
+       font-style: normal;
+}
+
+#nprogress .bar {
+  box-shadow: none;
+  height: 5px !important;
+}
+
+#nprogress .bar .peg {
+  box-shadow: none;
+}
 
 body,
 html,
@@ -59,44 +126,3 @@ html,
   margin: 0;
   padding: 0;
 }
-
-/* .button {
-  @apply cursor-pointer rounded bg-sudo block text-center py-4 px-20
-    text-sm uppercase font-bold focus:outline-none
-    focus:ring-4 focus:ring-sudo-dark;
-}
-
-.button-outline {
-  @apply cursor-pointer block rounded-lg p-4 text-center
-         uppercase leading-none font-bold border-2 border-sudo
-         hover:bg-sudo text-sm text-white transition
-         focus:outline-none focus:border-dark focus:shadow-none;
-}
-
-.debug {
-  @apply border-2 border-white;
-}
-
-.home-container {
-  width: calc(100vw - 80px);
-}
-
-@media screen and (max-width: 640px) {
-  .home-container {
-    width: 100%;
-  }
-}
-.about-list li {
-  margin: 10px 0;
-  text-align: justify;
-  font-size: 1.1rem;
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: red;
-} */
