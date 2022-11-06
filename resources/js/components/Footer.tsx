@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="flex items-center justify-center py-4 text-gray-500 flex-col text-sm sm:text-xs text-center px-2">
-      <div className="flex mb-3">
+      <div className="flex mb-3 text-white">
         <a
           href="https://www.facebook.com/sudocrypt/"
           target="_blank"
@@ -50,17 +50,20 @@ export default function Footer() {
           </svg>
         </a>
       </div>
-      <div className="text-[15px] mb-1">
-        <a target="_blank" href="//lnexun.com" rel="noreferrer">
-          Natural Log of Exun - ln(exun)
-        </a>{" "}
-        |{" "}
-        <a target="_blank" href="//dpsrkp.net" rel="noreferrer">
-          Delhi Public School, R.K. Puram
-        </a>
-      </div>
-      <div className="text-[13px]">
-        &copy; 2021-22 Exun Clan and DPS RK Puram, New Delhi, India
+
+      <div className="text-[0.8rem] sm:text-base text-white">
+        <div className="mb-1">
+          <a target="_blank" href="//lnexun.com" rel="noreferrer">
+            Natural Log of Exun - ln(exun)
+          </a>{" "}
+          |{" "}
+          <a target="_blank" href="//dpsrkp.net" rel="noreferrer">
+            Delhi Public School, R.K. Puram
+          </a>
+        </div>
+        <div>
+          &copy; 2021-22 Exun Clan and DPS RK Puram, New Delhi, India
+        </div>
       </div>
     </footer>
   );

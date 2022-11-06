@@ -5,41 +5,48 @@ import Layout from "../components/Layout";
 const Index: React.FC = () => {
   return (
     <Layout footer={true}>
-      <div className="flex justify-center items-center h-full sm:h-[calc(100vh-104px-120px)] w-full px-4 py-8">
-        <div className="w-full max-w-2xl h-auto flex flex-col justify-center items-center p-0 sm:p-8">
-          <img
-            src="/img/logo-red.png"
-            alt="Sudocrypt 2021-22"
-            className="h-32 w-32 sm:h-44 sm:w-44 mb-6 mr-3"
-          />
-          <h1 className="w-full text-red-500 text-4xl sm:text-6xl font-bold mb-6 text-center">
-            Sudocrypt 2021-22
-          </h1>
-          <p className="w-full text-white text-lg sm:text-xl font-bold text-center mb-3">
-            00:00:01 on Monday, 10th January 2022 to 23:59:59 on Tuesday, 11th
-            January 2022.
-          </p>
-          <div className="flex flex-col md:flex-row">
-            <a
-              href="https://exun.co/sudocrypt"
-              className="bg-sudo/[.45] border-sudo border-4 rounded w-[150px] h-[60px] sm:w-[222px] sm:h-[65px] flex justify-center items-center uppercase text-lg text-red-100 font-bold mb-3 md:mr-6 md:mb-0"
-            >
-              Discord
-            </a>
-            <Link
-              href="/auth/register"
-              className="bg-sudo border-sudo border-4 rounded w-[150px] h-[60px] sm:w-[222px] sm:h-[65px] flex justify-center items-center uppercase text-lg text-red-100 font-bold mb-3 md:mr-6 md:mb-0"
-            >
-              Register
-            </Link>
-            <a
-              href="https://exun.co/resources/cryptic"
-              className="bg-sudo/[.45] border-sudo border-4 rounded w-[150px] h-[60px] sm:w-[222px] sm:h-[65px] flex justify-center items-center uppercase text-lg text-red-100 font-bold"
-            >
-              Resources
-            </a>
-          </div>
+      <div className="h-full w-full flex flex-col items-center justify-center sm:gap-y-2 md:gap-y-6 lg:gap-y-10">
+
+        <div className="text-xl sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider h-[2rem] sm:h-[4rem]">
+          SUDOCRYPT v12
         </div>
+
+        <div className="w-full text-sudo-red text-md sm:text-xl lg:text-3xl font-normal mb-6 text-center font-mono">
+          9 November 2022 <span className="text-white">-</span>{" "}
+          <span className="text-sudo-yellow">10 November 2022</span>
+        </div>
+
+        <div className="flex msm:flex-col gap-y-3 items-center max-w-[900px] w-full gap-x-8 flex-wrap">
+          <a
+            href="https://discord.com"
+            target="_blank"
+            rel="noopener noreferer noreferrer"
+            className="px-2 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-white font-mono hover:bg-white hover:text-dark transition"
+          >
+            Discord
+          </a>
+
+          <Link
+            href="/auth/register"
+            target="_blank"
+            rel="noopener noreferer noreferrer"
+            className="px-3 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-sudo-red text-sudo-yellow font-mono hover:bg-sudo-red transition"
+          >
+            Register
+          </Link>
+
+          <a
+            href="https://exunclan.com/resources"
+            target="_blank"
+            rel="noopener noreferer noreferrer"
+            className="px-2 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-white font-mono hover:bg-white hover:text-dark transition"
+          >
+            Resources
+          </a>
+
+        </div>
+
+
       </div>
     </Layout>
   );

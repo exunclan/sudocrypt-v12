@@ -20,7 +20,7 @@ const Layout: React.FC<IProps> = ({
   notifications,
 }: IProps) => {
   return (
-    <div className="min-h-screen h-full bg-dark border-l border-r border-white mx-[30px] py-[30px] font-sans">
+    <div className="min-h-screen h-full bg-dark border-l border-r border-white mx-[10px] sm:mx-[30px] py-[10px] sm:py-[30px] font-sans">
       <div className="bg-dark w-full h-full text-white border-t border-b border-white">
         <div className="w-full h-full bg-gradient-to-bl from-dark via-dark-opacity flex flex-col">
           <Navbar notifications={notifications ?? []} />

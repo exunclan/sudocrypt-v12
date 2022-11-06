@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { formatDistanceToNow } from "date-fns";
-import { Link, usePage } from "@inertiajs/inertia-react";
-import { INotification, IPageProps } from "../lib/types";
+import React from "react";
+import { Link } from "@inertiajs/inertia-react";
+import { INotification } from "../lib/types";
 import NavbarNotifications from "./NavbarNotifications";
 import useNavbarLinks from "../lib/use-navbar-links";
 
@@ -13,11 +12,6 @@ interface INavbarProps {
 const Navbar: React.FC<INavbarProps> = ({
   notifications,
 }) => {
-  const {
-    props: {
-      authenticated
-    },
-  } = usePage<IPageProps>();
   const links = useNavbarLinks();
   const currentRoute = window.location.pathname;
 
@@ -43,7 +37,7 @@ const Navbar: React.FC<INavbarProps> = ({
           <Link
             href={href}
             key={i}
-            className={`font-light text-gray-400 uppercase tracking-widest ${currentRoute === href ? "!text-white" : ""}`}
+            className={`font-light text-gray-400 uppercase tracking-widest msm:text-sm ${currentRoute === href ? "!text-white" : ""}`}
           >
             {label}
           </Link>
