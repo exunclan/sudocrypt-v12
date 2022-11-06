@@ -6,7 +6,7 @@ import { IPageProps } from "../lib/types";
 const Index: React.FC = () => {
   const {
     props: {
-      auth: { user: { username } },
+      auth: { user },
       authenticated
     }
   } = usePage<IPageProps>();
@@ -26,7 +26,7 @@ const Index: React.FC = () => {
 
         {authenticated && (
           <div className="w-full text-md sm:text-xl lg:text-3xl text-center font-mono">
-            Your referral code is: <span>{username}</span>
+            Your referral code is: <span>{user.username}</span>
           </div>
         )}
 
@@ -40,14 +40,35 @@ const Index: React.FC = () => {
             Discord
           </a>
 
-          <Link
-            href="/auth/register"
-            target="_blank"
-            rel="noopener noreferer noreferrer"
-            className="px-3 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-sudo-red text-sudo-yellow font-mono hover:bg-sudo-red transition"
-          >
-            Register
-          </Link>
+          {authenticated ? user.discord_id ? (
+            <Link
+              href="/auth/logout"
+              target="_blank"
+              rel="noopener noreferer noreferrer"
+              className="px-3 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-sudo-red text-sudo-yellow font-mono hover:bg-sudo-red transition"
+            >
+              Logout
+            </Link>
+          ) : (
+
+            <Link
+              href="/discord"
+              target="_blank"
+              rel="noopener noreferer noreferrer"
+              className="px-3 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-sudo-red text-sudo-yellow font-mono hover:bg-sudo-red transition"
+            >
+              Link Discord
+            </Link>
+          ) : (
+            <Link
+              href="/auth/register"
+              target="_blank"
+              rel="noopener noreferer noreferrer"
+              className="px-3 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-sudo-red text-sudo-yellow font-mono hover:bg-sudo-red transition"
+            >
+              Register
+            </Link>
+          )}
 
           <a
             href="https://exunclan.com/resources"
