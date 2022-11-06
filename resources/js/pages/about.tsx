@@ -14,57 +14,74 @@ const About: React.FC = () => {
     },
   } = usePage<IPageProps>();
   return (
-    <Layout authenticated={authenticated} admin={Boolean(user?.admin)}>
+    <Layout
+      authenticated={authenticated}
+      admin={Boolean(user?.admin)}
+      footer={true}
+    >
       <div className="w-full h-full flex justify-center">
-        {/*h
-        <IndexCard
-          title="About"
-          authenticated={true}
-          className="sm:h-[calc(100vh-180px)] my-6 mx-6 w-full sm:w-3/4 md:w-1/2 text-base"
-        >
-          <ul className="h-full overflow-y-auto p-6 text-[#CBCDCE]">
-            <li>
-              <b>Sudocrypt v11.0</b> is an online 48-hour multiplayer Cryptic
-              Hunt x Capture the Flag (CTF) event organised by Exun Clan. The
-              event will be held from 00:00:01 on Monday, 10th January 2022 to
-              23:59:59 on Tuesday, 11th January 2022.
-            </li>
-            <Prizes />
-            <li className="mt-2">
-              Participants are required to join our{" "}
-              <a
-                href="https://sudocrypt.com/disc"
-                target="_blank"
-                rel="noreferrer"
-                className="font-bold text-sudo"
-              >
-                official Discord server
-              </a>{" "}
-              for all event related updates, including hints. Click{" "}
-              <Link href="/auth/register" className="font-bold text-sudo">
-                here
-              </Link>{" "}
-              to register!
-            </li>
-            <li className="mt-3">
-              To get yourself acquainted with cryptic hunts, visit our{" "}
-              <a
-                href="https://exun.co/resources/cryptic"
-                className="font-bold text-sudo"
-                target="_blank"
-                rel="noreferrer"
-              >
-                resources
-              </a>
-              .
-            </li>
-            <h2 className="mt-4 text-2xl font-bold text-gray-500">FAQ</h2>
+        <ul className="h-full overflow-y-auto p-6 text-[#CBCDCE]">
+          <li className="text-xl sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider h-[2rem] mb-4 sm:h-[4rem]">
+            ABOUT
+          </li>
+
+          <li className="w-full text-sudo-red text-md sm:text-xl lg:text-3xl font-mono mb-8">
+            9 November 2022 <span className="text-white">-</span>{" "}
+            <span className="text-sudo-yellow">10 November 2022</span>
+          </li>
+          <li className="font-mono">
+            <b>Sudocrypt v12.0</b> is an online 48-hour multiplayer Cryptic Hunt
+            x Capture the Flag (CTF) event organised by Exun Clan. The event
+            will be held from 00:00:01 on Wednesday, 9th November 2022 to
+            23:59:59 on Thursday, 10th November 2022.
+          </li>
+          <Prizes />
+          <li className="mt-2 font-mono">
+            Participants are required to join our{" "}
+            <a
+              href="https://sudocrypt.com/disc"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-sudo"
+            >
+              official Discord server
+            </a>{" "}
+            for all event related updates, including hints. Click{" "}
+            <Link href="/auth/register" className="font-bold text-sudo">
+              here
+            </Link>{" "}
+            to register!
+          </li>
+          <li className="mt-3 font-mono">
+            To get yourself acquainted with cryptic hunts, visit our{" "}
+            <a
+              href="https://exun.co/resources/cryptic"
+              className="font-bold text-sudo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              resources
+            </a>
+            .
+          </li>
+          <div className="font-mono">
+            <h2 className="mt-4 text-2xl font-bold text-gray-500 font-mono">
+              FAQ
+            </h2>
             <FAQAccordion
-              title={<li className="font-bold">1. What is a cryptic hunt?</li>}
+              title={
+                <li className="font-bold font-sans">
+                  1. What is a cryptic hunt?
+                </li>
+              }
               content="Cryptic hunts are virtual scavenger hunts where the participants are required to hunt the internet for clues, crack ciphers, and reach the final answer for each level. Sudocrypt, in particular, contains hints and answers in the domain of technology and related fields."
             />
             <FAQAccordion
-              title={<li className="font-bold">2. Who organizes Sudocrypt?</li>}
+              title={
+                <li className="font-bold font-sans">
+                  2. Who organizes Sudocrypt?
+                </li>
+              }
               content={
                 <li>
                   Sudocrypt is organised by{" "}
@@ -85,7 +102,7 @@ const About: React.FC = () => {
             />
             <FAQAccordion
               title={
-                <li className="font-bold">
+                <li className="font-bold font-sans">
                   3. How can I prepare for Sudocrypt?
                 </li>
               }
@@ -121,7 +138,7 @@ const About: React.FC = () => {
             />
             <FAQAccordion
               title={
-                <li className="font-bold">
+                <li className="font-bold font-sans">
                   4. How does someone win Sudocrypt?
                 </li>
               }
@@ -137,7 +154,7 @@ const About: React.FC = () => {
             />
             <FAQAccordion
               title={
-                <li className="font-bold">
+                <li className="font-bold font-sans">
                   5. I'm not in high school, can I participate?
                 </li>
               }
@@ -161,7 +178,7 @@ const About: React.FC = () => {
             />
             <FAQAccordion
               title={
-                <li className="font-bold">
+                <li className="font-bold font-sans">
                   6. Are we allowed to participate in teams?
                 </li>
               }
@@ -175,7 +192,9 @@ const About: React.FC = () => {
               }
             />
             <FAQAccordion
-              title={<li className="font-bold">7. Will we get hints?</li>}
+              title={
+                <li className="font-bold font-sans">7. Will we get hints?</li>
+              }
               content={
                 <li>
                   Hints will be posted in hints on the{" "}
@@ -197,7 +216,9 @@ const About: React.FC = () => {
               }
             />
             <FAQAccordion
-              title={<li className="font-bold">8. How do I sign up?</li>}
+              title={
+                <li className="font-bold font-sans">8. How do I sign up?</li>
+              }
               content={
                 <li>
                   Registrations are open at{" "}
@@ -212,25 +233,8 @@ const About: React.FC = () => {
                 </li>
               }
             />
-            <div className="flex items-center justify-center mt-10">
-              <a href="https://plaksha.edu.in" target="_blank" rel="noreferrer">
-                <img
-                  src="/img/Plaksha.png"
-                  alt="Plaksha Logo"
-                  className="w-auto h-32 mr-2"
-                />
-              </a>
-              <a href="https://exunclan.com" target="_blank" rel="noreferrer">
-                <img
-                  src="/img/exun-logo.png"
-                  alt="Plaksha Logo"
-                  className="w-auto h-16 ml-2"
-                />
-              </a>
-            </div>
-          </ul>
-        </IndexCard>
-      */}
+          </div>
+        </ul>
       </div>
     </Layout>
   );

@@ -67,7 +67,7 @@ function Prizes() {
 
   return (
     <PrizesContainer>
-      <div>
+      <div className="font-mono">
         {prizes.map(({ tier, color }, i) => (
           <div
             key={i}
@@ -82,7 +82,7 @@ function Prizes() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="font-mono">
         {prizes[selected].highlight && (
           <>
             <Highlight
