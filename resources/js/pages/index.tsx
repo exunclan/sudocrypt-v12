@@ -32,7 +32,7 @@ const Index: React.FC = () => {
 
         <div className="flex msm:flex-col gap-y-3 items-center max-w-[900px] w-full gap-x-8 flex-wrap">
           <a
-            href="https://discord.com"
+            href="https://discord.com/invite/zmVfv7PwFg"
             target="_blank"
             rel="noopener noreferer noreferrer"
             className="px-2 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-white font-mono hover:bg-white hover:text-dark transition"
