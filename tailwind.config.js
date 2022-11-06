@@ -21,24 +21,24 @@ module.exports = {
       },
       fontFamily: {
         mono: ["VCR OSD Mono", ...defaultTheme.fontFamily.mono],
-        sans: ["Panchang", ...defaultTheme.fontFamily.sans],
+        sans: ["Arcade", ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        "m2xl": { "max": "1535px" },
+        m2xl: { max: "1535px" },
         // => @media (max-width: 1535px) { ... }
 
-        "mxl": { "max": "1279px" },
+        mxl: { max: "1279px" },
         // => @media (max-width: 1279px) { ... }
 
-        "mlg": { "max": "1023px" },
+        mlg: { max: "1023px" },
         // => @media (max-width: 1023px) { ... }
 
-        "mmd": { "max": "767px" },
+        mmd: { max: "767px" },
         // => @media (max-width: 767px) { ... }
 
-        "msm": { "max": "639px" },
+        msm: { max: "639px" },
         // => @media (max-width: 639px) { ... }
-      }
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
