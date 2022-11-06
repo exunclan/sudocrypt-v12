@@ -5,8 +5,7 @@ import Layout from "../components/Layout";
 const Index: React.FC = () => {
   return (
     <Layout footer={true}>
-      <div className="h-full w-full flex flex-col items-center justify-center sm:gap-y-2 md:gap-y-6 lg:gap-y-10">
-
+      <div className="h-full w-full flex flex-col items-center justify-center sm:gap-y-2 md:gap-y-6 lg:gap-y-10 my-20">
         <div className="text-xl sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider h-[2rem] sm:h-[4rem]">
           SUDOCRYPT v12
         </div>

@@ -39,9 +39,9 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
 
   return (
     <Layout footer={true}>
-      <div className="h-full w-full max-w-[500px] flex flex-col items-center justify-center mx-auto">
+      <div className="h-full w-full max-w-[500px] flex flex-col items-center justify-center mx-auto my-10 px-3">
         <form
-          className="w-full"
+          className="w-full flex flex-col gap-y-5"
           onSubmit={(e: React.SyntheticEvent) => {
             e.preventDefault();
             post("/auth/login", {
@@ -49,13 +49,13 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
             });
           }}
         >
-          <h1 className="text-white font-mono text-4xl mb-4 uppercase">
+          <h1 className="text-white text-2xl uppercase">
             Login
           </h1>
+
           <TextInput
             name="email"
-            placeholder="Email"
-            containerClassName="my-5"
+            placeholder="E-MAIL"
             type="email"
             disabled={processing}
             error={errors.email}
@@ -64,8 +64,7 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
 
           <TextInput
             name="password"
-            placeholder="Password"
-            containerClassName="my-5"
+            placeholder="PASSWORD"
             type="password"
             disabled={processing}
             error={errors.password}
@@ -73,12 +72,15 @@ const Login: React.FC<IProps> = ({ error }: IProps) => {
           />
 
           {error && (
-            <div className="my-5">
+            <div>
               <div className="text-red-500 text-center font-bold">{error}</div>
             </div>
           )}
 
-          <button className="text-white w-full bg-sudo-red px-4 py-4 mt-4 transition duration-200 ease-in-out hover:opacity-80">
+          <button
+            type="submit"
+            className="text-white w-full bg-sudo-red px-4 py-4 transition duration-200 ease-in-out hover:opacity-80"
+          >
             Login
           </button>
         </form>

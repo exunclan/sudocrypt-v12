@@ -15,7 +15,8 @@ const About: React.FC = () => {
   } = usePage<IPageProps>();
   return (
     <Layout authenticated={authenticated} admin={Boolean(user?.admin)}>
-      <div className="w-full h-screen flex justify-center">
+      <div className="w-full h-full flex justify-center">
+        {/*h
         <IndexCard
           title="About"
           authenticated={true}
@@ -229,6 +230,7 @@ const About: React.FC = () => {
             </div>
           </ul>
         </IndexCard>
+      */}
       </div>
     </Layout>
   );
