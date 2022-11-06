@@ -12,6 +12,8 @@ class IndexController extends Controller
 {
   public function show(Request $request)
   {
+      return Inertia::render('index');
+
     if (auth()->check()) {
       $referred_by = null;
       if (auth()->user()->referred_by) {

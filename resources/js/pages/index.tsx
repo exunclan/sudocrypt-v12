@@ -1,8 +1,17 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 import React from "react";
 import Layout from "../components/Layout";
+import { IPageProps } from "../lib/types";
 
 const Index: React.FC = () => {
+  const {
+    props: {
+      auth: { user: { username } },
+      authenticated
+    }
+  } = usePage<IPageProps>();
+
+
   return (
     <Layout footer={true}>
       <div className="h-full w-full flex flex-col items-center justify-center sm:gap-y-2 md:gap-y-6 lg:gap-y-10 my-20">
@@ -10,10 +19,16 @@ const Index: React.FC = () => {
           SUDOCRYPT v12
         </div>
 
-        <div className="w-full text-sudo-red text-md sm:text-xl lg:text-3xl font-normal mb-6 text-center font-mono">
+        <div className="w-full text-sudo-red text-md sm:text-xl lg:text-3xl text-center font-mono">
           9 November 2022 <span className="text-white">-</span>{" "}
           <span className="text-sudo-yellow">10 November 2022</span>
         </div>
+
+        {authenticated && (
+          <div className="w-full text-md sm:text-xl lg:text-3xl text-center font-mono">
+            Your referral code is: <span>{username}</span>
+          </div>
+        )}
 
         <div className="flex msm:flex-col gap-y-3 items-center max-w-[900px] w-full gap-x-8 flex-wrap">
           <a

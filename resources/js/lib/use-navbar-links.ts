@@ -14,20 +14,20 @@ export default function useNavbarLinks() {
       href: "/",
       label: "Home",
     },
-    {
-      href: "/about",
-      label: "About",
-    },
+    // {
+    //   href: "/about",
+    //   label: "About",
+    // },
   ]
     .concat(authenticated ? [
-      {
-        href: "/leaderboard",
-        label: "Leaderboard",
-      },
-      {
-        href: "/me",
-        label: "Profile",
-      },
+      // {
+      //   href: "/leaderboard",
+      //   label: "Leaderboard",
+      // },
+      // {
+      //   href: "/me",
+      //   label: "Profile",
+      // },
       {
         href: "/auth/logout",
         label: "Logout",

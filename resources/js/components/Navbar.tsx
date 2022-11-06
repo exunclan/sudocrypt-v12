@@ -43,7 +43,7 @@ const Navbar: React.FC<INavbarProps> = ({
           </Link>
         ))}
 
-        <NavbarNotifications notifications={notifications} />
+        {/*<NavbarNotifications notifications={notifications} />*/}
       </div>
     </div>
   );
