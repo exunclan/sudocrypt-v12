@@ -120,8 +120,8 @@ Route::prefix('/admin')
     Route::resource('/shortlinks', ShortlinkController::class)
       ->only(['index', 'store', 'destroy']);
 
-    /* Route::resource('/notifications', NotificationController::class) */
-    /*   ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']); */
+    Route::resource('/notifications', NotificationController::class)
+      ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']);
 
     /* Route::prefix('/levels') */
     /*   ->name('levels.') */

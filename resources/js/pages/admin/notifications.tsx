@@ -20,7 +20,7 @@ const Notifications: React.FC<INotificationProps> = ({
   ) => setData(e.target.name as never, e.target.value as never);
 
   return (
-    <Layout authenticated admin>
+    <Layout footer>
       <div className="home-container pb-32">
         <div className="mx-auto max-w-[1000px] w-full">
           <div className="w-full flex justify-between">
@@ -50,7 +50,7 @@ const Notifications: React.FC<INotificationProps> = ({
                   Content
                 </label>
                 <textarea
-                  className="bg-dark-lighter text-gray-200 block w-full border-0 rounded-lg !ring-sudo !border-sudo !outline-sudo focus:ring-2 transition py-4 px-4"
+                  className="bg-transparent text-gray-200 block w-full border-0 border-b-2 border-gray-600 transition focus:ring-0 focus:!outline-none focus:!shadow-none focus:border-sudo-red py-4 px-1"
                   placeholder="Content"
                   name="content"
                   value={data.content}
@@ -64,13 +64,13 @@ const Notifications: React.FC<INotificationProps> = ({
               </div>
 
               <div className="">
-                <button type="submit" disabled={processing} className="button">
+                <button type="submit" disabled={processing} className="bg-black bg-opacity-50 p-4">
                   Create
                 </button>
               </div>
             </form>
 
-            <div className="my-10 bg-dark-lighter shadow-lg p-10 w-[48%]">
+            <div className="my-10 bg-black/50 shadow-lg p-10 w-[48%]">
               <div className="text-gray-600 text-sm uppercase font-bold">
                 Preview
               </div>
@@ -91,7 +91,7 @@ const Notifications: React.FC<INotificationProps> = ({
             </div>
           </div>
 
-          <table className="max-w-[1000px] w-full mx-auto divide-sudo divide-y bg-dark-lighter shadow-md">
+          <table className="max-w-[1000px] w-full mx-auto divide-sudo divide-y bg-black/50 shadow-md">
             <thead>
               <tr className="bg-sudo text-white font-extrabold uppercase">
                 <th className="p-3">Content</th>
