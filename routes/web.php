@@ -117,8 +117,8 @@ Route::prefix('/admin')
     /*       ->name('changePassword'); */
     /*   }); */
 
-    /* Route::resource('/shortlinks', ShortlinkController::class) */
-    /*   ->only(['index', 'store', 'destroy']); */
+    Route::resource('/shortlinks', ShortlinkController::class)
+      ->only(['index', 'store', 'destroy']);
 
     /* Route::resource('/notifications', NotificationController::class) */
     /*   ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']); */
@@ -138,11 +138,11 @@ Route::prefix('/admin')
     /*   }); */
   });
 
-// Route::get('/{shortlink:shortlink}', [ShortlinkController::class, 'redirect'])
-//   ->where('shortlink', '.*')
-//   ->missing(function (Request $request) {
-//     return Redirect::to('/404');
-//   });
+Route::get('/{shortlink:shortlink}', [ShortlinkController::class, 'redirect'])
+  ->where('shortlink', '.*')
+  ->missing(function (Request $request) {
+    return Redirect::to('/404');
+  });
 
 if (App::environment('local')) {
   Route::get('/authn', function () {

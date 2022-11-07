@@ -20,7 +20,7 @@ const Links: React.FC<IAdminLinksProps> = ({ links }: IAdminLinksProps) => {
   ) => setData(e.target.name as never, e.target.value as never);
 
   return (
-    <Layout authenticated admin>
+    <Layout footer>
       <div className="home-container pb-32">
         <div className="mx-auto max-w-[1000px] w-full">
           <form
@@ -67,13 +67,13 @@ const Links: React.FC<IAdminLinksProps> = ({ links }: IAdminLinksProps) => {
             />
 
             <div className="">
-              <button type="submit" disabled={processing} className="button">
+              <button type="submit" disabled={processing} className="bg-black bg-opacity-50 p-4">
                 Create
               </button>
             </div>
           </form>
 
-          <table className="max-w-[1000px] w-full mx-auto divide-sudo divide-y bg-dark-lighter shadow-md">
+          <table className="max-w-[1000px] w-full mx-auto divide-sudo divide-y bg-black bg-opacity-50 shadow-md">
             <thead>
               <tr className="bg-sudo text-white font-extrabold uppercase">
                 <th className="p-3">Shortlink</th>
