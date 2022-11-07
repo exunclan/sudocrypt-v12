@@ -230,6 +230,20 @@ const About: React.FC = () => {
               }
             />
           </div>
+          <div className="font-mono">
+            <h2 className="mt-4 text-2xl font-bold text-gray-500 font-mono">
+              Community Partners
+            </h2>
+            <div className="mt-4 w-full flex justify-center">
+              <a href="//cryptii.com" target="_blank" rel="noreferrer">
+                <img
+                  src="/cryptii.svg"
+                  alt=""
+                  className="h-[80px] w-auto object-contain"
+                />
+              </a>
+            </div>
+          </div>
         </ul>
       </div>
     </Layout>
