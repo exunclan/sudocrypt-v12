@@ -19,7 +19,7 @@ const About: React.FC = () => {
       admin={Boolean(user?.admin)}
       footer={true}
     >
-      <div className="w-full h-full flex justify-center">
+      <div className="w-full h-full max-w-[1000px] flex justify-center my-10 mx-auto">
         <ul className="h-full overflow-y-auto p-6 text-[#CBCDCE]">
           <li className="text-xl sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider h-[2rem] mb-4 sm:h-[4rem]">
             ABOUT
