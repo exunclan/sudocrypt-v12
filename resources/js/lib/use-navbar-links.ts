@@ -24,10 +24,10 @@ export default function useNavbarLinks() {
     .concat(
       authenticated
         ? [
-            // {
-            //   href: "/leaderboard",
-            //   label: "Leaderboard",
-            // },
+            {
+              href: "/rlleaderboard",
+              label: "Referral Leaderboard",
+            },
             // {
             //   href: "/me",
             //   label: "Profile",
