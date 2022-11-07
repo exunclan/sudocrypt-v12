@@ -78,7 +78,7 @@ const Admin: React.FC<IAdminProps> = ({
               Sudocrypt v11.0 Admin Panel
             </div>
             <div className="text-xl font-bold text-gray-600">
-              (Somesh worship chamber)
+              (Tnmy Vishesh Adventure Park)
             </div>
           </div>
 
@@ -93,7 +93,7 @@ const Admin: React.FC<IAdminProps> = ({
               // [shortlinks, "Shortlinks"],
             ].map(([value, label], i) => (
               <div
-                className="bg-dark-lighter shadow-md py-6 px-5 flex flex-col justify-center items-center"
+                className="bg-[#00000050] shadow-md py-6 px-5 flex flex-col justify-center items-center"
                 key={i}
               >
                 <div className="font-mono font-bold text-2xl sm:text-4xl text-gray-300">
@@ -108,7 +108,7 @@ const Admin: React.FC<IAdminProps> = ({
           <div className="flex flex-col items-stretch gap-y-4">
             {links.map(({ label, sub, href }, i) => (
               <Link
-                className="bg-dark-lighter block shadow-md p-6 flex items-center justify-between cursor-pointer gap-x-3"
+                className="bg-[#00000050] shadow-md p-6 flex items-center justify-between cursor-pointer gap-x-3"
                 href={href}
                 key={i}
               >

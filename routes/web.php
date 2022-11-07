@@ -49,7 +49,7 @@ Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->nam
 //   ->group(function () {
 //     Route::post('/edit', [MeController::class, 'edit'])->name('edit');
 //   });
-//
+
 // Route::prefix('/play')
 //   ->middleware(['in-progress', 'auth', 'dq'])
 //   ->name('play.')
@@ -94,50 +94,50 @@ Route::prefix('/discord/login')
     Route::get('/callback', [DiscordController::class, 'loginCallback'])->name('callback');
   });
 
-// Route::prefix('/admin')
-//   ->middleware(['auth', 'admin'])
-//   ->name('admin.')
-//   ->group(function () {
-//     Route::get('/', [AdminController::class, 'show'])->name('index');
-//
-//     Route::prefix('/users')
-//       ->name('users.')
-//       ->group(function () {
-//         Route::get('/', [UserController::class, 'index'])
-//           ->name('index');
-//         Route::get('/{user}', [UserController::class, 'show'])
-//           ->name('show');
-//         Route::get('/{user}/lvl/{level}', [UserController::class, 'level'])
-//           ->name('level');
-//         Route::post('/{user}/dq', [UserController::class, 'disqualify'])
-//           ->name('disqualify');
-//         Route::post('/{user}/admin', [UserController::class, 'admin'])
-//           ->name('admin');
-//         Route::post('/{user}/changepwd', [UserController::class, 'changePassword'])
-//           ->name('changePassword');
-//       });
-//
-//     Route::resource('/shortlinks', ShortlinkController::class)
-//       ->only(['index', 'store', 'destroy']);
-//
-//     Route::resource('/notifications', NotificationController::class)
-//       ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']);
-//
-//     Route::prefix('/levels')
-//       ->name('levels.')
-//       ->group(function () {
-//         Route::get('/', [LevelController::class, 'index'])->name('index');
-//         Route::get('/{level}', [LevelController::class, 'show'])->name('show');
-//         Route::put('/{level}', [LevelController::class, 'update'])->name('update');
-//       });
-//
-//     Route::prefix('/circles')
-//       ->name('circles.')
-//       ->group(function () {
-//         Route::put('/{circle}', [CircleController::class, 'update'])->name('update');
-//       });
-//   });
-//
+Route::prefix('/admin')
+  ->middleware(['auth', 'admin'])
+  ->name('admin.')
+  ->group(function () {
+    Route::get('/', [AdminController::class, 'show'])->name('index');
+
+    /* Route::prefix('/users') */
+    /*   ->name('users.') */
+    /*   ->group(function () { */
+    /*     Route::get('/', [UserController::class, 'index']) */
+    /*       ->name('index'); */
+    /*     Route::get('/{user}', [UserController::class, 'show']) */
+    /*       ->name('show'); */
+    /*     Route::get('/{user}/lvl/{level}', [UserController::class, 'level']) */
+    /*       ->name('level'); */
+    /*     Route::post('/{user}/dq', [UserController::class, 'disqualify']) */
+    /*       ->name('disqualify'); */
+    /*     Route::post('/{user}/admin', [UserController::class, 'admin']) */
+    /*       ->name('admin'); */
+    /*     Route::post('/{user}/changepwd', [UserController::class, 'changePassword']) */
+    /*       ->name('changePassword'); */
+    /*   }); */
+
+    /* Route::resource('/shortlinks', ShortlinkController::class) */
+    /*   ->only(['index', 'store', 'destroy']); */
+
+    /* Route::resource('/notifications', NotificationController::class) */
+    /*   ->only(['index', 'store', 'show', 'destroy', 'edit', 'update']); */
+
+    /* Route::prefix('/levels') */
+    /*   ->name('levels.') */
+    /*   ->group(function () { */
+    /*     Route::get('/', [LevelController::class, 'index'])->name('index'); */
+    /*     Route::get('/{level}', [LevelController::class, 'show'])->name('show'); */
+    /*     Route::put('/{level}', [LevelController::class, 'update'])->name('update'); */
+    /*   }); */
+
+    /* Route::prefix('/circles') */
+    /*   ->name('circles.') */
+    /*   ->group(function () { */
+    /*     Route::put('/{circle}', [CircleController::class, 'update'])->name('update'); */
+    /*   }); */
+  });
+
 // Route::get('/{shortlink:shortlink}', [ShortlinkController::class, 'redirect'])
 //   ->where('shortlink', '.*')
 //   ->missing(function (Request $request) {
