@@ -1,14 +1,15 @@
 // @ts-nocheck
 import React from "react";
 import { TableInstance } from "react-table";
+import TextInput from "../TextInput";
 
-const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
+const Pagination: React.FC<{ tbl: TableInstance<unknown> }> = ({ tbl }) => (
   <div className="w-full mx-auto flex items-center justify-between">
     <div className="flex gap-x-3">
       <button
         onClick={() => tbl.gotoPage(0)}
         disabled={!tbl.canPreviousPage}
-        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-sudo disabled:bg-gray-600"
+        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-black/50 disabled:bg-transparent disabled:text-gray-300/30"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +29,7 @@ const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
       <button
         onClick={() => tbl.previousPage()}
         disabled={!tbl.canPreviousPage}
-        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-sudo disabled:bg-gray-600"
+        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-black/50 disabled:bg-transparent disabled:text-gray-300/30"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +49,7 @@ const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
       <button
         onClick={() => tbl.nextPage()}
         disabled={!tbl.canNextPage}
-        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-sudo disabled:bg-gray-600"
+        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-black/50 disabled:bg-transparent disabled:text-gray-300/30"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +69,7 @@ const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
       <button
         onClick={() => tbl.gotoPage(tbl.pageCount - 1)}
         disabled={!tbl.canNextPage}
-        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-sudo disabled:bg-gray-600"
+        className="flex items-center justify-center w-10 h-10 text-xs font-extrabold text-white rounded-lg bg-black/50 disabled:bg-transparent disabled:text-gray-300/30"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -88,10 +89,9 @@ const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
     </div>
     <div className="flex items-center flex-1 px-10 gap-x-3">
       <span className="font-bold text-gray-600 uppercase">Goto</span>
-      <input
+      <TextInput
         type="number"
         placeholder="Page"
-        className="flex-1 bg-dark-lighter text-gray-200 block w-full border-0 rounded-lg !ring-sudo !border-sudo !outline-sudo focus:ring-2 transition py-4 px-4"
         onChange={(e) => {
           const page = e.target.value ? Number(e.target.value) - 1 : 0;
           tbl.gotoPage(page);
@@ -104,7 +104,7 @@ const Pagination = ({ tbl }: { tbl: TableInstance<unknown> }) => (
       onChange={(e) => {
         tbl.setPageSize(Number(e.target.value));
       }}
-      className="w-1/4 bg-dark-lighter text-gray-200 block w-full border-0 rounded-lg !ring-sudo !border-sudo !outline-sudo focus:ring-2 transition py-4 px-4"
+      className="bg-transparent text-gray-200 block border-0 border-b-2 border-gray-600 transition focus:ring-0 focus:!outline-none focus:!shadow-none focus:border-sudo-red py-4 px-1 w-1/4"
     >
       {[50, 100, 200, 500].map((pageSize) => (
         <option key={pageSize} value={pageSize}>

@@ -20,7 +20,7 @@ interface IUsersProps {
 const Table = ({ tbl }: { tbl: TableInstance<IUser> }) => (
   <table
     {...tbl.getTableProps()}
-    className="w-full mx-auto my-20 bg-gray-800 shadow-md divide-sudo divide-y"
+    className="w-full mx-auto my-20 bg-gray-800 shadow-md divide-sudo divide-y text-xs font-serif"
   >
     <thead>
       {tbl.headerGroups.map((headerGroup, i) => (
@@ -57,22 +57,9 @@ const Table = ({ tbl }: { tbl: TableInstance<IUser> }) => (
             <td className="p-3 text-center">
               <Link
                 href={`/admin/users/${row.original.id}`}
-                className="flex items-center justify-center w-6 h-6 font-mono text-xs font-extrabold rounded-lg bg-sudo"
+                className="bg-black/50 text-sm p-3"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
+                View
               </Link>
             </td>
           </tr>
@@ -111,12 +98,14 @@ const Users: React.FC<IUsersProps> = ({ users }: IUsersProps) => {
   );
 
   return (
-    <Layout authenticated admin>
+    <Layout footer>
       <div className="px-5 py-20 home-container">
-        <div className="max-w-[1000px] w-full sm:min-h-screen mx-auto">
+        <div className="w-full sm:min-h-screen mx-auto overflow-x-hidden">
           <Pagination tbl={tbl} />
           <Search tbl={tbl} />
-          <Table tbl={tbl} />
+          <div className="w-full overflow-x-auto">
+            <Table tbl={tbl} />
+          </div>
         </div>
       </div>
     </Layout>
