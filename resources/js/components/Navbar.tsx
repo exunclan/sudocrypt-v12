@@ -8,10 +8,7 @@ interface INavbarProps {
   notifications: INotification[];
 }
 
-
-const Navbar: React.FC<INavbarProps> = ({
-  notifications,
-}) => {
+const Navbar: React.FC<INavbarProps> = ({ notifications }) => {
   const links = useNavbarLinks();
   const currentRoute = window.location.pathname;
 
@@ -30,20 +27,20 @@ const Navbar: React.FC<INavbarProps> = ({
         </a>
       </div>
 
-      <div
-        className="flex flex-wrap items-center justify-center gap-x-6"
-      >
+      <div className="flex flex-wrap items-center justify-center gap-x-6">
         {links.map(({ href, label }, i) => (
           <Link
             href={href}
             key={i}
-            className={`font-light text-gray-400 uppercase tracking-widest msm:text-sm ${currentRoute === href ? "!text-white" : ""}`}
+            className={`font-light text-gray-400 uppercase tracking-widest msm:text-sm ${
+              currentRoute === href ? "!text-white" : ""
+            }`}
           >
             {label}
           </Link>
         ))}
 
-        {/*<NavbarNotifications notifications={notifications} />*/}
+        <NavbarNotifications notifications={notifications} />
       </div>
     </div>
   );

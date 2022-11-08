@@ -16,7 +16,7 @@ class UserController extends Controller
   public function index()
   {
     return Inertia::render('admin/users', [
-      'users' => User::with(['level', 'circle'])->get()
+      'users' => User::with(['level'])->get()
     ]);
   }
 
@@ -33,13 +33,10 @@ class UserController extends Controller
       'user' => $user,
       'referral_number' => User::where('referred_by', $user->id)->count(),
       'referred_by' => $referred_by,
-      'circles' => Circle::with('levels')
-        ->get()
-        ->map(fn ($circle) => [
-          'id' => $circle->id,
-          'name' => $circle->name,
-          'levels' => $circle->levels->map(fn ($lvl) => $lvl->id)
-        ]),
+      'levels' => Level::all()->map(fn ($level) => [
+        'id' => $level->id,
+        'name' => $level->name,
+      ]),
       'completed_levels' => UserAttempt::select('level_id as id')
         ->where('correct', true)
         ->where('user_id', $user->id)
@@ -80,7 +77,6 @@ class UserController extends Controller
 
   public function level(User $user, Level $level)
   {
-    $user->circle;
     return Inertia::render('admin/user_attempts', [
       'user_attempts' => UserAttempt::where('user_id', $user->id)
         ->where('level_id', $level->id)

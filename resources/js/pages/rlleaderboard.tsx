@@ -45,7 +45,7 @@ const RlLeaderboard: React.FC<IRlLeaderboardProps> = ({
   return (
     <Layout authenticated={authenticated}>
       <div className="home-container h-screen flex flex-col justify-start items-center p-10">
-        <h1 className="text-xl text-center sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider h-[2rem] mb-4 sm:h-[4rem]">
+        <h1 className="text-xl text-center sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider leading-[1]">
           REFERRAL LEADERBOARD
         </h1>
         <div className="px-10 max-w-[1000px] w-full mx-auto">

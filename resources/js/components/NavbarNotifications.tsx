@@ -6,7 +6,9 @@ interface INavbarNotificationProps {
   notifications: INotification[];
 }
 
-const NavbarNotifications: React.FC<INavbarNotificationProps> = ({ notifications }) => {
+const NavbarNotifications: React.FC<INavbarNotificationProps> = ({
+  notifications,
+}) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [unreadNotification, setUnreadNotification] = useState(false);
 
@@ -15,15 +17,21 @@ const NavbarNotifications: React.FC<INavbarNotificationProps> = ({ notifications
       "SUDOCRYPT_LAST_SEEN_NOTIFICATION"
     )
       ? parseInt(
-        window.localStorage.getItem("SUDOCRYPT_LAST_SEEN_NOTIFICATION") ?? ""
-      )
+          window.localStorage.getItem("SUDOCRYPT_LAST_SEEN_NOTIFICATION") ?? ""
+        )
       : 0;
     if (!showNotifications) {
+      console.log(
+        notifications &&
+          notifications.length > 0 &&
+          notifications.map(({ id }) => id).sort((a, b) => b - a)[0] >
+            latestNotificationRead
+      );
       if (
         notifications &&
         notifications.length > 0 &&
         notifications.map(({ id }) => id).sort((a, b) => b - a)[0] >
-        latestNotificationRead
+          latestNotificationRead
       ) {
         setUnreadNotification(true);
       }
@@ -43,9 +51,9 @@ const NavbarNotifications: React.FC<INavbarNotificationProps> = ({ notifications
 
   return (
     <>
-      {(notifications && notifications.length > 0) && (
+      {notifications && notifications.length > 0 && (
         <div
-          className="items-center justify-center hidden w-10 h-10 border-4 border-gray-600 rounded-lg cursor-pointer sm:flex top-6 right-52"
+          className="relative items-center justify-center hidden w-10 h-10 border-4 border-gray-600 rounded-lg cursor-pointer sm:flex"
           onClick={showNotificationPanel}
         >
           {unreadNotification && (
@@ -67,37 +75,35 @@ const NavbarNotifications: React.FC<INavbarNotificationProps> = ({ notifications
           </svg>
         </div>
       )}
-
       {showNotifications && (
         <>
-          <div className="absolute top-20 right-52 sm:w-1/2 md:w-1/4 h-[300px] overflow-y-auto bg-dark-lighter z-[1010] p-5 rounded">
+          <div className="absolute top-24 right-14 sm:w-1/2 md:w-1/4 h-[300px] overflow-y-auto bg-black z-[1010] p-5 rounded">
             {notifications &&
-                notifications.map(({ created_at, content }, i) => (
-                  <div key={i}>
-                    <div className="my-5">
-                      <div dangerouslySetInnerHTML={{ __html: content }} />
-                      <div className="mt-2 text-sm font-bold text-right text-gray-600 uppercase">
-                        {formatDistanceToNow(new Date(created_at), {
-                          addSuffix: true,
-                          includeSeconds: true,
-                        })}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center my-8 gap-x-4">
-                      <div className="w-[30%] h-[2px] bg-sudo opacity-30"></div>
-                      <div className="w-[10px] h-[10px] border-2 border-sudo border-opacity-30 rounded-full"></div>
-                      <div className="w-[30%] h-[2px] bg-sudo opacity-30"></div>
+              notifications.map(({ created_at, content }, i) => (
+                <div key={i}>
+                  <div className="my-5">
+                    <div dangerouslySetInnerHTML={{ __html: content }} />
+                    <div className="mt-2 text-sm font-bold text-right text-gray-600 uppercase">
+                      {formatDistanceToNow(new Date(created_at), {
+                        addSuffix: true,
+                        includeSeconds: true,
+                      })}
                     </div>
                   </div>
-                ))}
+                  <div className="flex items-center justify-center my-8 gap-x-4">
+                    <div className="w-[30%] h-[2px] bg-sudo opacity-30"></div>
+                    <div className="w-[10px] h-[10px] border-2 border-sudo border-opacity-30 rounded-full"></div>
+                    <div className="w-[30%] h-[2px] bg-sudo opacity-30"></div>
+                  </div>
+                </div>
+              ))}
           </div>
           <div
             className="w-screen h-screen fixed top-0 left-0 z-[1000]"
             onClick={() => setShowNotifications(false)}
           ></div>
         </>
-      )
-      }
+      )}
     </>
   );
 };

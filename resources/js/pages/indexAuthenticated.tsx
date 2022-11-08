@@ -52,7 +52,11 @@ const IndexAuthenticated: React.FC<IIndexAuthenticatedProps> = ({
   }, []);
 
   return (
-    <Layout authenticated admin={Boolean(user.admin)}>
+    <Layout
+      authenticated
+      admin={Boolean(user.admin)}
+      notifications={notifications}
+    >
       <>
         <div className="home-container md:h-screen flex flex-col md:flex-row items-start md:px-6">
           <div className="w-full md:w-1/2 md:h-[90vh] px-6 flex items-center my-6 md:my-0">

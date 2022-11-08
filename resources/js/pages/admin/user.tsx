@@ -10,7 +10,7 @@ import useTitle from "../../lib/use-title";
 
 interface IUserProps {
   user: IUser;
-  circles: { id: number; name: string; levels: number[] }[];
+  levels: { id: number }[];
   completed_levels: number[];
   referral_number: number;
   referred_by: string;
@@ -20,7 +20,7 @@ interface IUserProps {
 
 const User: React.FC<IUserProps> = ({
   user,
-  circles,
+  levels,
   completed_levels,
   referral_number,
   referred_by,
@@ -89,50 +89,34 @@ const User: React.FC<IUserProps> = ({
     <Layout authenticated={true} admin={true}>
       <div className="home-container sm:min-h-screen flex items-center justify-center p-20 gap-x-20">
         <div className="bg-dark-lighter p-6 shadow-md max-w-sm w-full rounded-lg">
-          {circles.map(({ id, name, levels }, i) => (
-            <div
-              className={`border-gray-600 ${
-                i === circles.length - 1 ? "" : "border-b"
-              } py-3 flex items-center justify-between`}
-              key={i}
-            >
-              <div
-                className={`uppercase ${
-                  id === user.circle?.id ? "text-sudo" : "text-gray-600"
-                } font-bold`}
-              >
-                {name}
-              </div>
-              <div className="flex justify-center items-center gap-x-2">
-                {levels.map((lvl, i) =>
-                  completed_levels.includes(lvl) || user.level?.id === lvl ? (
-                    <Link
-                      key={i}
-                      className={`${
-                        completed_levels.includes(lvl)
-                          ? "bg-sudo border-sudo"
-                          : user.level?.id === lvl
-                          ? "bg-yellow-400 border-yellow-400"
-                          : "bg-dark border-gray-600 text-gray-600"
-                      } bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center`}
-                      href={`/admin/users/${user.id}/lvl/${lvl}`}
-                    >
-                      {lvl}
-                    </Link>
-                  ) : (
-                    <div
-                      key={i}
-                      className={
-                        "bg-dark border-gray-600 text-gray-600 bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center"
-                      }
-                    >
-                      {lvl}
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-x-2">
+            {levels.map((lvl, i) =>
+              completed_levels.includes(lvl.id) || user.level?.id === lvl.id ? (
+                <Link
+                  key={i}
+                  className={`${
+                    completed_levels.includes(lvl.id)
+                      ? "bg-sudo border-sudo"
+                      : user.level?.id === lvl.id
+                      ? "bg-yellow-400 border-yellow-400"
+                      : "bg-dark border-gray-600 text-gray-600"
+                  } bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center`}
+                  href={`/admin/users/${user.id}/lvl/${lvl.id}`}
+                >
+                  {lvl.id - 1}
+                </Link>
+              ) : (
+                <div
+                  key={i}
+                  className={
+                    "bg-dark border-gray-600 text-gray-600 bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center"
+                  }
+                >
+                  {lvl.id - 1}
+                </div>
+              )
+            )}
+          </div>
         </div>
         <div className="h-full max-w-xl w-full bg-dark-lighter p-6 shadow-md rounded-lg">
           <div className="flex gap-x-10 items-stretch">
