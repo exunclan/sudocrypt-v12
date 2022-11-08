@@ -57,7 +57,7 @@ class LevelController extends Controller
         'answer' => 'required',
         'points' => 'required',
         'source_hint' => 'nullable',
-        'circle_id' => 'required'
+        'is_story' => 'required'
       ])
     );
 
@@ -73,10 +73,10 @@ class LevelController extends Controller
   public function show(Level $level)
   {
     return Inertia::render('admin/level', [
-      'circles' => $this->circlesWithLevelIds(),
       'level' => Level::where('id', $level->id)
         ->withCount(['users', 'attempts', 'solves'])
-        ->first()
+        ->first(),
+      'levels' => Level::all(),
     ]);
   }
 
@@ -88,7 +88,7 @@ class LevelController extends Controller
    */
   public function edit(Level $level)
   {
-    return Inertia::render('admin/level', ['level' => $level, 'circles' => Circle::all()]);
+    return Inertia::render('admin/level', ['level' => $level]);
   }
 
   /**
@@ -102,7 +102,7 @@ class LevelController extends Controller
   {
     $request->validate([
       'question' => 'required',
-      'answer' => 'required',
+      'answer' => 'nullable',
       'points' => 'required',
       'source_hint' => 'nullable',
     ]);
