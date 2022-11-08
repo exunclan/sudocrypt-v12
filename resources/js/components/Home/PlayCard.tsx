@@ -21,7 +21,7 @@ const PlayCard: React.FC = () => {
       icon={
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-gray-600"
+          className="h-6 w-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -45,15 +45,14 @@ const PlayCard: React.FC = () => {
       {ended ? (
         <div className="h-full flex flex-col justify-center items-center">
           <div className="text-2xl font-bold text-gray-600">
-            Sudocrypt v11.0 has ended
+            Sudocrypt v12.0 has ended
           </div>
         </div>
       ) : started ? (
         <div className="h-full flex flex-col">
-          <div className="flex-1 sm:grid grid-rows-2 grid-cols-2 sm:gap-10 sm:p-10 flex flex-col gap-y-3">
+          <div className="sm:gap-10 sm:p-10 flex flex-row justify-evenly gap-y-3">
             {[
               [user.level?.id ?? "-", "Level"],
-              [user.circle?.name, "Circle"],
               [user.points, "Points"],
               // ["153", "Position"],
             ].map(([value, label], i) => (
@@ -69,14 +68,14 @@ const PlayCard: React.FC = () => {
                 </div>
               </div>
             ))}
-            <div className="flex items-center justify-center p-2 flex-1">
-              <Link
-                href="/play"
-                className="text-xl bg-sudo rounded-xl py-4 px-6 uppercase font-bold focus:outline-none focus:shadow-none ring-sudo-dark focus:ring-4"
-              >
-                Play
-              </Link>
-            </div>
+          </div>
+          <div className="flex items-center justify-center p-2 flex-1">
+            <Link
+              href="/play"
+              className="text-xl bg-sudo rounded-xl py-4 px-6 uppercase font-bold focus:outline-none focus:shadow-none ring-sudo-dark focus:ring-4"
+            >
+              Play
+            </Link>
           </div>
         </div>
       ) : (

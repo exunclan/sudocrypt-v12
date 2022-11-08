@@ -43,21 +43,21 @@ Route::get('/rlleaderboard', [RlLeaderboardController::class, 'show'])->name('rl
 Route::get('/', [IndexController::class, 'show'])->middleware(['dq'])->name('index');
 Route::get('/about', [IndexController::class, 'about'])->middleware(['dq'])->name('about');
 
-// Route::prefix('/me')
-//   ->middleware(['auth'])
-//   ->name('me.')
-//   ->group(function () {
-//     Route::post('/edit', [MeController::class, 'edit'])->name('edit');
-//   });
+Route::prefix('/me')
+  ->middleware(['auth'])
+  ->name('me.')
+  ->group(function () {
+    Route::post('/edit', [MeController::class, 'edit'])->name('edit');
+  });
 
-// Route::prefix('/play')
-//   ->middleware(['in-progress', 'auth', 'dq'])
-//   ->name('play.')
-//   ->group(function () {
-//     Route::get('/', [PlayController::class, 'show'])->name('show');
-//     Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
-//     Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
-//   });
+Route::prefix('/play')
+  ->middleware(['in-progress', 'auth', 'dq'])
+  ->name('play.')
+  ->group(function () {
+    Route::get('/', [PlayController::class, 'show'])->name('show');
+    Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
+    Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
+  });
 
 // ----- Authentication -----
 Route::prefix('/auth')

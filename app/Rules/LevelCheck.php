@@ -33,11 +33,9 @@ class LevelCheck implements Rule
       'attempt' => $value,
       'user_id' => auth()->id(),
       'level_id' => auth()->user()->level->id,
-      'circle_id' => auth()->user()->circle->id,
       'correct' => $answer === $value,
       'ip' => request()->ip()
     ]))->save();
-
     return $answer === $value;
   }
 

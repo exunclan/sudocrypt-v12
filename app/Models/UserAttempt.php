@@ -13,7 +13,6 @@ class UserAttempt extends Model
     'attempt',
     'user_id',
     'level_id',
-    'circle_id',
     'ip',
     'correct'
   ];

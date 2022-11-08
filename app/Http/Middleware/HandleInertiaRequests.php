@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Circle;
 use App\Models\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,9 +62,7 @@ class HandleInertiaRequests extends Middleware
           'admin',
           'disqualified',
           'points',
-          'circle',
           'level_id',
-          'circle_id',
           'last_active',
           'last_solved'
         )
@@ -77,13 +74,8 @@ class HandleInertiaRequests extends Middleware
         'id',
         'created_at',
         'updated_at',
-        'circle_id'
+        'is_story'
       ) : null,
-      /* 'auth.user.created' => fn () => Auth::check() */
-      /*   ? $request->user()->only('created_at')['created_at']->diffForHumans() */
-      /*   : null, */
-      /* 'user' => Auth::user(), */
-      'circle' => Auth::check() ? Auth::user()->circle : null,
       'authenticated' => Auth::check(),
       'flash' => [
         'error' => fn () => $request->session()->get('error'),

@@ -31,20 +31,21 @@ const AttemptLevel: React.FC = () => {
 
   return (
     <div>
-      <div className="text-sudo text-6xl font-extrabold">Play</div>
-      <div className="bg-dark-lighter p-6 shadow-md max-w-sm w-full rounded my-10">
-        <div className="text-sudo-light text-sm uppercase font-bold">
-          {user.circle?.name} &middot; Level {user.level?.id} &middot;{" "}
-          {user.level?.points} Points
-        </div>
+      <div className="text-sudo text-4xl sm:text-6xl font-extrabold">
+        Question
+      </div>
+      <div className="w-full flex flex-col max-w-[700px]">
         <div
-          className="text-lg my-5"
+          className="text-md mt-5 font-regular"
           dangerouslySetInnerHTML={{
             __html: user.level?.question as string,
           }}
         />
+        <div className="text-sudo-light text-xs uppercase font-bold self-end">
+          Level {user.level?.id} &middot; {user.level?.points} Points
+        </div>
         <form
-          className="w-full block"
+          className="w-full block flex flex-col"
           onSubmit={(e) => {
             e.preventDefault();
             post("", {
@@ -57,12 +58,24 @@ const AttemptLevel: React.FC = () => {
             });
           }}
         >
-          <div className="mt-5 w-full focus-within:ring-4 ring-sudo rounded transition hidden sm:flex">
+          {user.level?.is_story ? (
             <input
               type="text"
               name="attempt"
               placeholder="Answer"
-              className="flex-1 min-w-0 w-auto border-none rounded-tl rounded-bl p-5 bg-dark text-white h-full focus:border-none focus:outline-none focus:ring-0 focus:shadow-none"
+              className="flex-1 min-w-0 w-auto border border-white p-5 bg-dark text-white h-full focus:border-white focus:ring-0 focus:shadow-none text-sm mt-12 hidden"
+              style={{ boxShadow: "none" }}
+              autoComplete="off"
+              ref={inputRef}
+              value=""
+              disabled={true}
+            />
+          ) : (
+            <input
+              type="text"
+              name="attempt"
+              placeholder="Answer"
+              className="flex-1 min-w-0 w-auto border border-white p-5 bg-dark text-white h-full focus:border-white focus:ring-0 focus:shadow-none text-sm mt-12"
               style={{ boxShadow: "none" }}
               autoComplete="off"
               ref={inputRef}
@@ -70,37 +83,39 @@ const AttemptLevel: React.FC = () => {
               disabled={processing}
               onChange={handleChange}
             />
-            <button
-              type="submit"
-              disabled={processing}
-              className="bg-sudo focus:bg-sudo-dark text-sm font-bold p-5 uppercase rounded-tr rounded-br h-full flex items-center justify-center transition focus:outline-none"
-            >
-              submit
-            </button>
-          </div>
+          )}
+          <button
+            type="submit"
+            disabled={processing}
+            className="bg-[#D1483B] text-sm font-bold p-5 uppercase h-full flex items-center justify-center transition focus:outline-none self-end mt-12"
+          >
+            submit
+          </button>
 
           <div className="text-sm text-red-500 my-3 hidden sm:block">
             {errors.attempt}
           </div>
-
-          <div className="block sm:hidden">
-            <TextInput
-              name="answer"
-              placeholder="Answer"
-              className="bg-dark"
-              containerClassName="my-5"
-              type="text"
-              disabled={processing}
-              error={errors.attempt}
-              value={data.attempt}
-              onChange={handleChange}
-            />
-            <div className="flex w-full justify-center">
-              <button type="submit" className="button">
-                Submit
-              </button>
-            </div>
-          </div>
+          {
+            // <div className="block sm:hidden">
+            //   <TextInput
+            //     name="answer"
+            //     placeholder="Answer"
+            //     className="bg-dark"
+            //     containerClassName="my-5"
+            //     type="text"
+            //     disabled={processing}
+            //     error={errors.attempt}
+            //     value={data.attempt}
+            //     onChange={handleChange}
+            //   />
+            //   <div className="flex w-full justify-center">
+            //     <button type="submit" className="button">
+            //       Submit
+            //     </button>
+            //   </div>
+            // </div>
+            //
+          }
         </form>
       </div>
     </div>

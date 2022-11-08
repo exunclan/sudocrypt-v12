@@ -22,41 +22,60 @@ class PlayController extends Controller
     }
     return Inertia::render('play', [
       'hint' => $hint,
-      'circles' => Circle::with('levels')
-        ->get()
-        ->map(fn ($circle) => [
-          'id' => $circle->id,
-          'name' => $circle->name,
-          'levels' => $circle->levels->map(fn ($lvl) => $lvl->id)
-        ]),
-      'completed_levels' => UserAttempt::select('level_id as id')
-        ->where('correct', true)
-        ->where('user_id', auth()->id())
-        ->get()
-        ->map(fn ($lvl) => $lvl->id),
+      // 'completed_levels' => UserAttempt::select('level_id as id')
+      //   ->where('correct', true)
+      //   ->where('user_id', auth()->id())
+      //   ->get()
+      //   ->map(fn ($lvl) => $lvl->id),
       'notifications' => Notification::orderBy('created_at', 'DESC')->get(),
       'error' => null,
+      'levels' => Level::select('id', 'question', 'is_story')->get()->map(function ($level) {
+        return [
+          'id' => $level->id,
+          'question' => $level->question,
+          'is_story' => $level->is_story,
+          'is_completed' => $level->id < auth()->user()->level_id,
+          'is_current_level' => $level->id == auth()->user()->level_id,
+        ];
+      }),
+      'previous_stories' => Level::where('is_story', true)->where('id', '<', auth()->user()->level_id)->get()->map(function ($level) {
+        return [
+          'id' => $level->id,
+          'question' => $level->question,
+        ];
+      })
     ]);
   }
 
   public function attempt(Request $request)
   {
-    $request->validate([
-      'attempt' => [
-        'required',
-        "regex:/^[a-z0-9-_{}:()|&;@#ʻ]+$/",
-        new LevelCheck
-      ]
-    ]);
-
     $user = User::find(auth()->id());
     $level = $user->level;
-    $completedLevels = collect($user->attempts()
-      ->where('correct', true)
-      ->select('level_id as id')
-      ->get()
-      ->map(fn ($l) => $l->id));
-    $allLevelsSolved = $user->circle->levels->every(fn ($lvl) => $completedLevels->contains($lvl->id));
+
+    if ($level->is_story) {
+      (new UserAttempt([
+        'attempt' => '',
+        'user_id' => auth()->id(),
+        'level_id' => auth()->user()->level->id,
+        'correct' => true,
+        'ip' => request()->ip()
+      ]))->save();
+    } else {
+      $request->validate([
+        'attempt' => [
+          "regex:/^[a-z0-9-_{}:()|&;@#ʻ]+$/",
+          new LevelCheck
+        ]
+      ]);
+    }
+
+
+    // $completedLevels = collect($user->attempts()
+    //   ->where('correct', true)
+    //   ->select('level_id as id')
+    //   ->get()
+    //   ->map(fn ($l) => $l->id));
+    // $allLevelsSolved = Level::all()->levels->every(fn ($lvl) => $completedLevels->contains($lvl->id));
 
     // Answer is correct
     // Update points
@@ -65,26 +84,26 @@ class PlayController extends Controller
     // Check if all levels in circle are solved
     //   If yes, move to next circle
 
-    if ($user->circle_id === 3 || $user->circle_id === 8) { // Circle is Desire and Violence, therefore dynamic pointing
-      $numberOfUsersDoneWithLevel = UserAttempt::where('level_id', $user->level_id)->where('correct', true)->count();
-      if ($numberOfUsersDoneWithLevel >= 6) { // 6 because we've already created a UserAttempt for this guy
-        $user->points = $user->points + ((5 / 6) * $level->points * M_E ** (-0.012 * ($numberOfUsersDoneWithLevel - 5)) + ($level->points / 6));
-      } else {
-        $user->points = $user->points + $level->points;
-      }
-    } else {
+    // if ($user->circle_id === 3 || $user->circle_id === 8) { // Circle is Desire and Violence, therefore dynamic pointing
+    //   $numberOfUsersDoneWithLevel = UserAttempt::where('level_id', $user->level_id)->where('correct', true)->count();
+    //   if ($numberOfUsersDoneWithLevel >= 6) { // 6 because we've already created a UserAttempt for this guy
+    //     $user->points = $user->points + ((5 / 6) * $level->points * M_E ** (-0.012 * ($numberOfUsersDoneWithLevel - 5)) + ($level->points / 6));
+    //   } else {
+    //     $user->points = $user->points + $level->points;
+    //   }
+    // } else {
       $user->points = $user->points + $level->points;
-    }
+    // }
     $user->last_solved = now();
-    $user->level_id = null;
-    if ($allLevelsSolved) {
-      $nextCircle = Circle::find($user->circle_id + 1);
-      if ($nextCircle) {
-        $user->circle_id = $nextCircle->id;
-      } else {
-        $user->circle_id = null;
-      }
-    }
+    $user->level_id = $level->id + 1;
+    // if ($allLevelsSolved) {
+    //   $nextCircle = Circle::find($user->circle_id + 1);
+    //   if ($nextCircle) {
+    //     $user->circle_id = $nextCircle->id;
+    //   } else {
+    //     $user->circle_id = null;
+    //   }
+    // }
     $user->save();
 
     return redirect()->route('play.show');

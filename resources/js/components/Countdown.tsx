@@ -35,6 +35,7 @@ const Countdown: React.FC<ICountdownProps> = ({
   onZero,
 }: ICountdownProps) => {
   const { dates, started, ended } = usePage<IPageProps>().props;
+  console.log(dates, started, ended);
   if (ended) {
     return (
       <div style={style} className="text-white">

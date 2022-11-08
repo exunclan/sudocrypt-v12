@@ -38,6 +38,7 @@ export interface ILevel {
   source_hint?: string;
   answer?: string;
   points: number;
+  is_story: boolean;
 
   circle?: ICircle;
 }

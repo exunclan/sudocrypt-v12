@@ -14,7 +14,6 @@ class Level extends Model
     'answer',
     'points',
     'source_hint',
-    'circle_id',
   ];
 
   public function circle()
