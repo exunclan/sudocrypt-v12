@@ -5,12 +5,17 @@ import Layout from "../../components/Layout";
 import { IPageProps } from "../../lib/types";
 
 interface IAdminLevelsProps {
-  circles: { id: number; name: string; levels: number[] }[];
+  levels: {
+    id: number;
+    question: string;
+    answer?: string;
+    is_story: boolean;
+  }[];
   error?: string;
 }
 
 const Levels: React.FC<IAdminLevelsProps> = ({
-  circles,
+  levels,
   error,
 }: IAdminLevelsProps) => {
   const { addToast } = useToasts();
@@ -30,27 +35,17 @@ const Levels: React.FC<IAdminLevelsProps> = ({
     <Layout authenticated admin>
       <div className="home-container sm:h-screen relative flex justify-center items-center gap-x-14">
         <div className="bg-dark-lighter p-6 shadow-md max-w-sm w-full rounded-lg">
-          {circles.map(({ name, levels }, i) => (
-            <div
-              className={`border-gray-600 ${
-                i === circles.length - 1 ? "" : "border-b"
-              } py-3 flex items-center justify-between`}
-              key={i}
-            >
-              <div className="uppercase text-gray-600 font-bold">{name}</div>
-              <div className="flex justify-center items-center gap-x-2">
-                {levels.map((id, i) => (
-                  <Link
-                    key={i}
-                    href={`/admin/levels/${id}`}
-                    className={`${"bg-dark border-gray-600 text-gray-600"} bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center cursor-pointer`}
-                  >
-                    {id}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-5 justify-center items-center gap-x-2">
+            {levels.map((lvl, i) => (
+              <Link
+                key={i}
+                href={`/admin/levels/${lvl.id}`}
+                className={`${"bg-dark border-gray-600 text-gray-600"} bg-opacity-30 border-2 rounded-lg font-bold text-sm h-8 w-8 flex justify-center items-center cursor-pointer`}
+              >
+                {lvl.id}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>

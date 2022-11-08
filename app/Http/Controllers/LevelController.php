@@ -30,7 +30,7 @@ class LevelController extends Controller
   public function index()
   {
     return Inertia::render('admin/levels', [
-      'circles' => $this->circlesWithLevelIds(),
+      'levels' => Level::all(),
     ]);
   }
 
