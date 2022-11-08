@@ -41,6 +41,9 @@ const Leaderboard: React.FC<ILeaderboardProps> = ({
   return (
     <Layout authenticated={authenticated}>
       <div className="home-container h-screen flex flex-col justify-start items-center p-10">
+        <h1 className="text-xl text-center sm:text-[2rem] lg:text-[4rem] font-bold tracking-wider leading-[1]">
+          LEADERBOARD
+        </h1>
         <div className="px-10 max-w-[1000px] w-full mx-auto">
           <input
             type="text"
@@ -52,63 +55,57 @@ const Leaderboard: React.FC<ILeaderboardProps> = ({
             style={{ boxShadow: "none" }}
           />
         </div>
-        <IndexCard
-          className="h-[calc(100vh-104px-120px)] overflow-y-auto w-full lg:w-3/4"
-          authenticated={authenticated}
-          title="Leaderboard"
-        >
-          <div className="flex-1 overflow-y-auto p-10 max-w-[1000px] h-full w-full mx-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="font-extrabold text-xl uppercase text-sudo">
-                  <th className="p-5">Rank</th>
-                  <th className="p-5">Username</th>
-                  <th className="p-5">Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {displayUsers.map(({ id, rank, username, points }, i) => (
-                  <tr
-                    key={i}
-                    className={
-                      rank === "DQ"
-                        ? "text-sudo-dark font-extrabold"
-                        : "font-bold"
-                    }
+        <div className="flex-1 overflow-y-auto p-10 max-w-[1000px] h-full w-full mx-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="font-extrabold text-xl uppercase text-sudo">
+                <th className="p-5">Rank</th>
+                <th className="p-5">Username</th>
+                <th className="p-5">Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayUsers.map(({ id, rank, username, points }, i) => (
+                <tr
+                  key={i}
+                  className={
+                    rank === "DQ"
+                      ? "text-sudo-dark font-extrabold"
+                      : "font-bold"
+                  }
+                >
+                  <td
+                    className="text-lg text-center p-5 bg-none"
+                    style={{ color: "inerit" }}
                   >
-                    <td
-                      className="text-lg text-center p-5 bg-none"
-                      style={{ color: "inerit" }}
-                    >
-                      {rank}
-                    </td>
-                    <td
-                      className="text-lg text-center p-5 bg-none"
-                      style={{ color: "inerit" }}
-                    >
-                      {user.admin ? (
-                        <Link
-                          href={`/admin/users/${id}`}
-                          className="text-sudo underline"
-                        >
-                          {username}
-                        </Link>
-                      ) : (
-                        username
-                      )}
-                    </td>
-                    <td
-                      className="text-lg text-center p-5 bg-none"
-                      style={{ color: "inerit" }}
-                    >
-                      {points}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </IndexCard>
+                    {rank}
+                  </td>
+                  <td
+                    className="text-lg text-center p-5 bg-none"
+                    style={{ color: "inerit" }}
+                  >
+                    {user.admin ? (
+                      <Link
+                        href={`/admin/users/${id}`}
+                        className="text-sudo underline"
+                      >
+                        {username}
+                      </Link>
+                    ) : (
+                      username
+                    )}
+                  </td>
+                  <td
+                    className="text-lg text-center p-5 bg-none"
+                    style={{ color: "inerit" }}
+                  >
+                    {points}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Layout>
   );

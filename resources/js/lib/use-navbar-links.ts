@@ -25,8 +25,8 @@ export default function useNavbarLinks() {
       authenticated
         ? [
             {
-              href: "/rlleaderboard",
-              label: "Referral Leaderboard",
+              href: "/leaderboard",
+              label: "Leaderboard",
             },
             // {
             //   href: "/me",
