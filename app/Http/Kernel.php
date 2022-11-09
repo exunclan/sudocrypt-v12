@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
     'admin' => \App\Http\Middleware\EnsureAdmin::class,
     'in-progress' => \App\Http\Middleware\InProgress::class,
     'dq' => \App\Http\Middleware\Disqualified::class,
+    'discord' => \App\Http\Middleware\EnsureDiscord::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
     'can' => \Illuminate\Auth\Middleware\Authorize::class,

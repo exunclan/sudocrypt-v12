@@ -40,6 +40,14 @@ class IndexController extends Controller
     return view('disqualified');
   }
 
+  public function discord()
+  {
+    if (auth()->check() && auth()->user()->discord_id != null) {
+      return Redirect::route('index');
+    }
+    return view('discord');
+  }
+
   public function notifications()
   {
     return Inertia::render('notifications', [

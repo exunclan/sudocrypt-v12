@@ -37,6 +37,7 @@ Route::get('/404', function (Request $request) {
 });
 
 Route::get('/dq', [IndexController::class, 'dq'])->name('dq');
+Route::get('/discord-nc', [IndexController::class, 'discord'])->name('discord');
 Route::get('/leaderboard', [LeaderboardController::class, 'show'])->name('leaderboard');
 Route::get('/rlleaderboard', [RlLeaderboardController::class, 'show'])->name('rlleaderboard');
 
@@ -51,12 +52,12 @@ Route::prefix('/me')
   });
 
 Route::prefix('/play')
-  ->middleware(['in-progress', 'auth', 'dq'])
+  ->middleware(['in-progress', 'auth', 'dq', 'discord'])
   ->name('play.')
   ->group(function () {
     Route::get('/', [PlayController::class, 'show'])->name('show');
     Route::post('/', [PlayController::class, 'attempt'])->name('attempt');
-    Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
+    // Route::post('/choose-level', [PlayController::class, 'chooseLevel'])->name('chooseLevel');
   });
 
 // ----- Authentication -----
