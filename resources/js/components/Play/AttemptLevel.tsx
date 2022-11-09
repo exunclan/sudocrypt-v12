@@ -42,7 +42,8 @@ const AttemptLevel: React.FC = () => {
           }}
         />
         <div className="text-sudo-light text-xs uppercase font-bold self-end">
-          Level {user.level?.id} &middot; {user.level?.points} Points
+          Level {user.level?.id ? user.level.id - 1 : 0} &middot;{" "}
+          {user.level?.points} Points
         </div>
         <form
           className="w-full block flex flex-col"
