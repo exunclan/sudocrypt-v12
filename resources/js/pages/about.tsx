@@ -38,12 +38,15 @@ const About: React.FC = () => {
               href="https://sudocrypt.com/disc"
               target="_blank"
               rel="noreferrer"
-              className="font-bold text-sudo"
+              className="font-bold text-sudo underline"
             >
               official Discord server
             </a>{" "}
             for all event related updates, including hints. Click{" "}
-            <Link href="/auth/register" className="font-bold text-sudo">
+            <Link
+              href="/auth/register"
+              className="font-bold text-sudo underline"
+            >
               here
             </Link>{" "}
             to register!
@@ -52,7 +55,7 @@ const About: React.FC = () => {
             To get yourself acquainted with cryptic hunts, visit our{" "}
             <a
               href="https://exun.co/resources/cryptic"
-              className="font-bold text-sudo"
+              className="font-bold text-sudo underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -70,20 +73,20 @@ const About: React.FC = () => {
                   1. What is a cryptic hunt?
                 </li>
               }
-              content="Cryptic hunts are virtual scavenger hunts where the participants are required to hunt the internet for clues, crack ciphers, and reach the final answer for each level. Sudocrypt, in particular, contains hints and answers in the domain of technology and related fields."
+              content='Cryptic hunts are virtual scavenger hunts where the participants are required to "hunt" the internet for clues, crack ciphers, and reach the final answer for each level. Sudocrypt v12.0, in particular, contains hints and answers in the domain of technology and related fields.'
             />
             <FAQAccordion
               title={
                 <li className="font-bold font-sans">
-                  2. Who organizes Sudocrypt?
+                  2. Who organizes Sudocrypt v12.0?
                 </li>
               }
               content={
                 <li>
-                  Sudocrypt is organised by{" "}
+                  Sudocrypt v12.0 is organised by{" "}
                   <a
                     href="https://exunclan.com"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -112,7 +115,7 @@ const About: React.FC = () => {
                   hunts at our{" "}
                   <a
                     href="https://exun.co/resources/cryptic"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -121,7 +124,7 @@ const About: React.FC = () => {
                   and view some of the past questions{" "}
                   <a
                     href="https://docs.google.com/document/d/1JoBXkgSwaUxRGLoQ9zC-zR-KGU0XaCU53fBkLq6AoVo/edit?usp=sharing"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -135,23 +138,23 @@ const About: React.FC = () => {
             <FAQAccordion
               title={
                 <li className="font-bold font-sans">
-                  4. How does someone win Sudocrypt?
+                  4. How does someone win Sudocrypt v12.0?
                 </li>
               }
               content={
                 <li>
-                  Sudocrypt can be won in 2 ways: either by being the first
-                  person to solve all the levels or by being at the top of the
-                  leaderboard when the event ends. Rankings on the leaderboard
-                  depend on the points earned by solving levels. Time will be
-                  the deciding factor used to settle ties.
+                  Sudocrypt v12.0 can be won in 2 ways: either by being the
+                  first person to solve all the levels or by being at the top of
+                  the leaderboard when the event ends. Rankings on the
+                  leaderboard depend on the points earned by solving levels.
+                  Time will be the deciding factor used to settle ties.
                 </li>
               }
             />
             <FAQAccordion
               title={
                 <li className="font-bold font-sans">
-                  5. I'm not in high school, can I participate?
+                  5. I&apos;m not in high school, can I participate?
                 </li>
               }
               content={
@@ -162,7 +165,7 @@ const About: React.FC = () => {
                   or aren’t participating in other{" "}
                   <a
                     href="https://exunclan.com"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -198,7 +201,7 @@ const About: React.FC = () => {
                     href="https://sudocrypt.com/disc"
                     target="_blank"
                     rel="noreferrer"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                   >
                     Sudocrypt Discord server
                   </a>
@@ -220,12 +223,53 @@ const About: React.FC = () => {
                   Registrations are open at{" "}
                   <a
                     href="https://sudocrypt.com/register"
-                    className="font-bold text-sudo"
+                    className="font-bold text-sudo underline"
                     target="_blank"
                     rel="noreferrer"
                   >
                     https://sudocrypt.com/register
                   </a>
+                </li>
+              }
+            />
+            <FAQAccordion
+              title={
+                <li className="font-bold font-sans">
+                  9. What are lead confirmations?
+                </li>
+              }
+              content={
+                <li>
+                  Lead confirmations are short yes or no confirmations that can
+                  be asked from event moderators, to confirm whether you’re on
+                  the right path while solving the question. You can regularly
+                  ask the moderators for confirmations that you’re progressing
+                  correctly and applying the right logic while solving the
+                  level. Note that you should not ask direct answers from the
+                  moderators or ask for private hints, as your messages would be
+                  ignored. Also be careful not to spam the moderators.
+                </li>
+              }
+            />
+            <FAQAccordion
+              title={
+                <li className="font-bold font-sans">
+                  10. How will I confirm leads during Sudocrypt v12.0?
+                </li>
+              }
+              content={
+                <li>
+                  Lead confirmations will be done via the DMs to the of the
+                  official Sudocrypt Leads accounts (Colour-Code:{" "}
+                  <span style={{ color: "maroon" }}>maroon</span>, Role:
+                  <span style={{ color: "maroon" }}>@sudocrypt</span> leads) on
+                  the discord server. Leads will only be confirmed during the
+                  hunt, and only on DMs of{" "}
+                  <span style={{ color: "maroon" }}>@Sudocrypt Leads 1</span> /{" "}
+                  <span style={{ color: "maroon" }}>@Sudocrypt Leads 2</span> /{" "}
+                  <span style={{ color: "maroon" }}>@Sudocrypt Leads 3</span>{" "}
+                  accounts. No lead confirmations will be taking place on the
+                  personal accounts of the admins.
                 </li>
               }
             />
@@ -238,6 +282,13 @@ const About: React.FC = () => {
               <a href="//cryptii.com" target="_blank" rel="noreferrer">
                 <img
                   src="/img/cryptii.svg"
+                  alt=""
+                  className="h-[80px] w-auto object-contain"
+                />
+              </a>
+              <a href="//plakshaeducation.com" target="_blank" rel="noreferrer">
+                <img
+                  src="/img/plaksha.png"
                   alt=""
                   className="h-[80px] w-auto object-contain"
                 />
