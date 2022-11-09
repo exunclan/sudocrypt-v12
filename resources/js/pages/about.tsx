@@ -243,6 +243,17 @@ const About: React.FC = () => {
                 />
               </a>
             </div>
+            <p className="text-white text-center mt-2">
+              Infra sponsored by{" "}
+              <a
+                href="//goo.gle/ctfsponsorship"
+                target="_blank"
+                rel="noreferrer"
+                className="underline"
+              >
+                goo.gle/ctfsponsorship
+              </a>
+            </p>
           </div>
         </ul>
       </div>

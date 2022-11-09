@@ -32,7 +32,6 @@ class PlayController extends Controller
       'levels' => Level::select('id', 'question', 'is_story')->get()->map(function ($level) {
         return [
           'id' => $level->id,
-          'question' => $level->question,
           'is_story' => $level->is_story,
           'is_completed' => $level->id < auth()->user()->level_id,
           'is_current_level' => $level->id == auth()->user()->level_id,
