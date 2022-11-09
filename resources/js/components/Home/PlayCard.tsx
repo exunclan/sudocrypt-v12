@@ -52,7 +52,7 @@ const PlayCard: React.FC = () => {
         <div className="h-full flex flex-col">
           <div className="sm:gap-10 sm:p-10 flex flex-row justify-evenly gap-y-3">
             {[
-              [user.level?.id ?? "-", "Level"],
+              [user.level?.id ? user.level.id : "-", "Level"],
               [user.points, "Points"],
               // ["153", "Position"],
             ].map(([value, label], i) => (
