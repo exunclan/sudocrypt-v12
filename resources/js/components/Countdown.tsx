@@ -69,7 +69,7 @@ const Countdown: React.FC<ICountdownProps> = ({
       className="flex gap-x-4 border border-sudo-green border-opacity-30 p-3 rounded-lg"
     >
       <div className="flex flex-col space-x-2 items-center">
-        <span className="text-6xl mb-2 font-extrabold text-sudo-green">
+        <span className="text-4xl md:text-6xl mb-2 font-extrabold text-sudo-green">
           {countdown.days}
         </span>
         <span className="uppercase text-sm font-bold text-white">
@@ -77,19 +77,19 @@ const Countdown: React.FC<ICountdownProps> = ({
         </span>
       </div>
       <div className="flex flex-col items-center">
-        <span className="text-6xl mb-2 font-extrabold text-sudo-green">
+        <span className="text-4xl md:text-6xl mb-2 font-extrabold text-sudo-green">
           {countdown.hours}
         </span>
         <span className="uppercase text-sm font-bold text-white">HR</span>
       </div>
       <div className="flex flex-col items-center">
-        <span className="text-6xl mb-2 font-extrabold text-sudo-green">
+        <span className="text-4xl md:text-6xl mb-2 font-extrabold text-sudo-green">
           {countdown.minutes}
         </span>
         <span className="uppercase text-sm font-bold text-white">Min</span>
       </div>
       <div className="flex flex-col items-center">
-        <span className="text-6xl mb-2 font-extrabold text-sudo-green">
+        <span className="text-4xl md:text-6xl mb-2 font-extrabold text-sudo-green">
           {countdown.seconds}
         </span>
         <span className="uppercase text-sm font-bold text-white">Sec</span>

@@ -237,7 +237,7 @@ const About: React.FC = () => {
             <div className="mt-4 w-full flex justify-center">
               <a href="//cryptii.com" target="_blank" rel="noreferrer">
                 <img
-                  src="/cryptii.svg"
+                  src="/img/cryptii.svg"
                   alt=""
                   className="h-[80px] w-auto object-contain"
                 />

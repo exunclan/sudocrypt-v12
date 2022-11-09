@@ -30,7 +30,7 @@ const Index: React.FC = () => {
           </div>
         )}
 
-        <div className="flex msm:flex-col gap-y-3 items-center max-w-[1000px] w-full gap-x-8 flex-wrap">
+        <div className="flex msm:flex-col gap-3 items-center max-w-[1000px] w-full gap-x-8 flex-wrap">
           <a
             href="//exun.co/sudocrypt"
             target="_blank"
@@ -84,9 +84,9 @@ const Index: React.FC = () => {
           href="//cryptii.com"
           target="_blank"
           rel="noopener noreferer noreferrer"
-          className="px-8 py-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-white font-mono hover:bg-white hover:text-dark transition"
+          className="px-8 py-2 mt-2 md:py-6 text-sm md:text-xl lg:text-3xl flex-1 text-center border border-white font-mono hover:bg-white hover:text-dark transition"
         >
-          Cryptii
+          Cryptography Playground
         </a>
         <Countdown
           onZero={() => {
