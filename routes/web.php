@@ -37,7 +37,7 @@ Route::get('/404', function (Request $request) {
 });
 
 Route::get('/dq', [IndexController::class, 'dq'])->name('dq');
-Route::get('/discord-nc', [IndexController::class, 'discord'])->name('discord');
+Route::get('/discord-nc', [IndexController::class, 'discord'])->name('discord-nc');
 Route::get('/leaderboard', [LeaderboardController::class, 'show'])->name('leaderboard');
 Route::get('/rlleaderboard', [RlLeaderboardController::class, 'show'])->name('rlleaderboard');
 
