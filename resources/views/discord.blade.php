@@ -12,13 +12,7 @@
 
 <body class="flex items-center justify-center w-full h-screen bg-dark flex-col">
   <h1 class="text-5xl text-center text-white">You need to connect your discord account.</h1>
-  <a
-    href="/discord"
-    className="cursor-pointer text-center text-white p-3 px-4 text-sm uppercase font-bold rounded-lg focus:outline-none focus:ring-4 focus:ring-[#3e48b4] bg-[#5865F2]"
-    style="background: #5865F2; padding: 0.75rem;"
-  >
-    Connect
-  </a>
+  <p style="color: white">Find the <strong>Connect</strong> Discord button on the <a href="//sudocrypt.com" target="_blank" style="text-decoration: underline;">Home</a> page.
 </body>
 
 </html>
