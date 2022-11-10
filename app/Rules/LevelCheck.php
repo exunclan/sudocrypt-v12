@@ -18,6 +18,8 @@ class LevelCheck implements Rule
     //
   }
 
+  public $is42 = false;
+
   /**
    * Determine if the validation rule passes.
    *
@@ -28,6 +30,10 @@ class LevelCheck implements Rule
   public function passes($attribute, $value)
   {
     $answer = request()->user()->level->answer;
+
+    if ($value === "42") {
+      $this->is42 = true;
+    }
 
     (new UserAttempt([
       'attempt' => $value,
@@ -46,6 +52,9 @@ class LevelCheck implements Rule
    */
   public function message()
   {
+    if ($this->is42 == true) {
+      return "42 is not the answer to everything";
+    } 
     return 'Not it';
   }
 }
